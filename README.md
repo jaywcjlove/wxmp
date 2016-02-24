@@ -6,7 +6,7 @@ chrome 小插件，优化在微信公众账号中发文章，因复制粘贴带�
 
 > `code`,`pre`,`h1`,`h2`,`h3`,`h4`,`h5`,`h6`,`p`,`div`,`span`
 
-![界面预览](https://github.com/jaywcjlove/wxmq/blob/master/wxma.png?raw=true)
+![界面预览](https://raw.githubusercontent.com/jaywcjlove/wxmp/master/wxmq.png)
 
 
 # 插件安装 
