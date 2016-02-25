@@ -9,12 +9,15 @@ chrome.extension.onRequest.addListener(
                     for (var i = 0; i < elms.length; i++) {
                         var styl = elms[i].getAttribute('style');
                         if(elms[i].tagName === 'PRE'){
-                            elms[i].setAttribute('style',' word-wrap: normal!important;box-sizing: border-box; overflow: auto;font-size: 0.93em; padding: 1em; margin-top: 1.5em; margin-bottom: 1.5em; line-height: 1.3; word-break: break-all; word-wrap: break-word; color: rgb(101, 123, 131); border: none; border-radius: 3px; max-height: 35em;  background-color:#E1E1E9;') 
+                            elms[i].setAttribute('style','box-sizing: border-box; overflow: auto;font-size: 0.93em; padding: 1em; margin-top: 1.5em; margin-bottom: 1.5em; line-height: 1.3; word-break: break-all; word-wrap: break-word; color: rgb(51, 51, 51); border: none; border-radius: 3px; max-height: 35em; position: relative;background-color:#EBEBF0;word-wrap: initial!important;') 
                         }else if(elms[i].tagName === 'CODE'){
-                            elms[i].setAttribute('style','box-sizing: border-box;font-size: 1em; color: inherit; border-radius: 0px; white-space: inherit; overflow-wrap: normal; background: none;') 
+                            elms[i].setAttribute('style','box-sizing: border-box;font-size: 1em; color: inherit; border-radius: 0px; white-space: inherit; overflow-wrap: normal; background: none;word-wrap:normal!important;') 
                         }else{
                             if(styl){
                                 styl = styl.replace(/font-family\:[\s\S]*?\;/g,'');
+                                if(elms[i].tagName === 'SPAN'){
+                                    styl += 'word-wrap:normal!important;';
+                                }
                                 elms[i].setAttribute('style',styl);
                             }
                         }
