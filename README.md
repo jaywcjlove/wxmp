@@ -9,6 +9,16 @@ chrome 小插件，优化在微信公众账号中发文章，因复制粘贴带�
 ![界面预览](https://raw.githubusercontent.com/jaywcjlove/wxmp/master/wxmq.png)
 
 
+## 已经实现功能
+
+- [x] 过滤 `font-family`
+- [x] 代码高亮区域有背景颜色
+- [x] 代码高亮区域有横向滚动条强制不换行
+- [x] 增加iOS滚动滚动弹性
+- [] 添加设置标题功能
+- [] 添加字段高亮功能
+
+
 # 插件安装 
 
 1. 下载文件压缩包解压
