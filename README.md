@@ -19,8 +19,13 @@ chrome 小插件，优化在微信公众账号中发文章，因复制粘贴带�
 - [ ] 添加字段高亮工具；
 - [ ] 添加删除线工具，如：<del>删除线</del>；
 
+# 直接安装
 
-# 插件安装 
+1. 下载扩展程序[Wxmp.crx](https://github.com/jaywcjlove/wxmp/releases) 文件
+2. 在chrome里面器地址输入`chrome://extensions/` 打开插件界面
+3. 将`Wxmp.crx`文件拖入chrome浏览器的扩展程序列表中
+
+# 开发模式插件安装 
 
 1. 下载文件压缩包解压
 2. 在chrome里面器地址输入`chrome://extensions/` 打开插件界面
