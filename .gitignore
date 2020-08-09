@@ -1,0 +1,11 @@
+.DS_Store
+.cache
+.vscode
+
+*.bak
+*.tem
+*.temp
+#.swp
+*.*~
+~*.*
+*.crx
