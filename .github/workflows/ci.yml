@@ -23,9 +23,77 @@ jobs:
           output: build/CONTRIBUTORS.svg
           avatarSize: 42
 
+      - name: Create Tag
+        id: create_tag
+        uses: jaywcjlove/create-tag-action@main
+        with:
+          package-path: ./package.json
+
+      - name: get tag version
+        id: tag_version
+        uses: jaywcjlove/changelog-generator@main
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          commit_message: ${{ github.event.head_commit.message }}
+          commit_message: ${{ github.event.head_commit.message }} ${{steps.tag_version.outputs.tag}} 
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+
+      - name: Generate Changelog
+        id: changelog
+        uses: jaywcjlove/changelog-generator@main
+        with:
+          head-ref: ${{steps.create_tag.outputs.version}}
+          filter-author: (renovate-bot|Renovate Bot)
+          filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        if: steps.create_tag.outputs.successful
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ steps.create_tag.outputs.version }}
+          tag: ${{ steps.create_tag.outputs.version }}
+          body: |
+            Documentation ${{ steps.changelog.outputs.tag }}: https://raw.githack.com/jaywcjlove/wxmp/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
+            Comparing Changes: ${{ steps.changelog.outputs.compareurl }}  
+
+            ${{ steps.changelog.outputs.changelog }}
+
+      # Create Docker Image
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Awesome Mac image
+        run: docker image build -t wxmp .
+
+      - name: Tags & Push image (latest)
+        run: |
+          echo "outputs.tag - ${{ steps.changelog.outputs.version }}"
+          docker tag wxmp ${{ secrets.DOCKER_USER }}/wxmp:latest
+          docker push ${{ secrets.DOCKER_USER }}/wxmp:latest
+
+      - name: Tags & Push image
+        if: steps.create_tag.outputs.successful
+        run: |
+          echo "outputs.tag - ${{ steps.changelog.outputs.version }}"
+          docker tag wxmp ${{ secrets.DOCKER_USER }}/wxmp:${{steps.changelog.outputs.version}}
+          docker push ${{ secrets.DOCKER_USER }}/wxmp:${{steps.changelog.outputs.version}}
+
+      # Create Docker Image in GitHub
+      - name: Login to GitHub registry
+        run: echo ${{ github.token }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Build docker image
+        run: docker build -t ghcr.io/jaywcjlove/wxmp:latest .
+
+      - name: Publish to GitHub registry
+        run: docker push ghcr.io/jaywcjlove/wxmp:latest
+
+      - name: Tag docker image (beta) and publish to GitHub registry
+        if: steps.create_tag.outputs.successful
+        run: |
+            echo "version: v${{ steps.changelog.outputs.version }}"
+            docker tag ghcr.io/jaywcjlove/wxmp:latest ghcr.io/jaywcjlove/wxmp:${{steps.changelog.outputs.version}}
+            docker push ghcr.io/jaywcjlove/wxmp:${{steps.changelog.outputs.version}}

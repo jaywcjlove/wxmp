@@ -72,6 +72,42 @@ Inline Code `{code: 0}`
   音 <rp></rp><rt>yin</rt><rp></rp>
 </ruby>
 
+## 部署
+
+[![Docker Image Version (latest by date)](https://img.shields.io/docker/v/wcjiang/wxmp?logo=docker)](https://hub.docker.com/r/wcjiang/wxmp) [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/wcjiang/wxmp?logo=docker)](https://hub.docker.com/r/wcjiang/wxmp) [![Docker Pulls](https://img.shields.io/docker/pulls/wcjiang/wxmp?logo=docker)](https://hub.docker.com/r/wcjiang/wxmp)
+
+轻松通过 docker 部署《微信公众号 Markdown 编辑器》网站应用。
+
+```bash
+docker pull wcjiang/wxmp
+# Or
+docker pull ghcr.io/jaywcjlove/wxmp:latest
+```
+
+```bash
+docker run --name wxmp --rm -d -p 96611:3000 wcjiang/wxmp:latest
+# Or
+docker run --name wxmp -itd -p 96611:3000 wcjiang/wxmp:latest
+# Or
+docker run --name wxmp -itd -p 96611:3000 ghcr.io/jaywcjlove/wxmp:latest
+```
+
+在浏览器中访问以下 URL
+
+```
+http://localhost:96611/
+```
+
+## Contributors
+
+As always, thanks to our amazing contributors!
+
+<a href="https://github.com/jaywcjlove/wxmp/graphs/contributors">
+  <img src="https://jaywcjlove.github.io/wxmp/CONTRIBUTORS.svg" />
+</a>
+
+Made with [github-action-contributors](https://github.com/jaywcjlove/github-action-contributors).
+
 ## License
 
 Licensed under the MIT License.
