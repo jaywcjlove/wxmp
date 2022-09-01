@@ -1,7 +1,0 @@
-ul,li{margin: 0;padding: 0;}
-.warpper{width: 200px; min-height: 23px;}
-.warpper ul {}
-.warpper ul li{}
-.warpper ul li a{display: block;box-shadow: 0 1px 1px 0 #D0D0D0;line-height: 23px;border:1px solid #D0D0D0;border-radius: 4px;padding: 0 5px;color:#333;}
-.warpper ul li a:hover{box-shadow: 0 1px 1px 0 #4A90E2;border: 1px solid #4A90E2;color:#4A90E2;}
-.warpper ul li a:active{box-shadow: 0 1px 1px 0 #ABABAB;border: 1px solid #ABABAB;color:#ABABAB;}

@@ -1,41 +1,75 @@
-# Wxmp
+<div align="center">
 
-chrome 小插件，优化在微信公众账号中发文章，因复制粘贴带过去的`font-family` CSS 样式，导致被微信过滤样式全无。使用此插件删除提交文章上所有HTML节点上的`font-family`，让复制过去的样式保持一致。  
+<h1 align="center">微信公众号 Markdown 编辑器</h1>
 
-目前删除这些标签上的`font-family`样式
+</div>
 
-> `code`,`pre`,`h1`,`h2`,`h3`,`h4`,`h5`,`h6`,`p`,`div`,`span`
+用于微信公众号文章使用 markdown 语法做一篇简介美观大方的微信公众号图文的工具。原先是一个 Chrome 插件来解决排版问题，由于发版本麻烦，和一些功能拓展开发停滞了，最近写了一个 Web 版本供自己使用。
 
-![界面预览](https://raw.githubusercontent.com/jaywcjlove/wxmp/master/wxmq.png)
+## 功能特性
 
+开发计划和一些功能介绍，有新需求可以在 issue 中提。
 
-## 已经实现功能
+- [x] 支持 Markdown 所有基础语法
+- [x] 支持自定义 CSS 样式
+- [ ] 支持主题选择 & 配置。
+- [x] 支持明暗两种主题预览。
+- [ ] 支持色盘取色，快速替换文章整体色调
 
-- [x] 过滤 `font-family`；
-- [x] 代码高亮区域有背景颜色；
-- [x] 代码高亮区域有横向滚动条强制不换行；
-- [x] 增加iOS滚动滚动弹性；
-- [ ] 添加设置标题工具；
-- [ ] 添加字段高亮工具；
-- [ ] 添加删除线工具，如：<del>删除线</del>；
+### 支持代码块样式
 
-# 直接安装
+下面是 `jsx` 代码块展示示例，并高亮代码
 
-1. 下载扩展程序[Wxmp.crx](https://github.com/jaywcjlove/wxmp/releases) 文件
-2. 在chrome里面器地址输入`chrome://extensions/` 打开插件界面
-3. 将`Wxmp.crx`文件拖入chrome浏览器的扩展程序列表中
+```jsx
+function Demo() {
+  return <div className="demo">Hello World!</div>
+}
+```
 
-# 开发模式插件安装 
+下面是 `css` 代码块展示示例，并高亮代码
 
-1. 下载文件压缩包解压
-2. 在chrome里面器地址输入`chrome://extensions/` 打开插件界面
-3. 点击`加载已解压的扩展程序...` 
-4. 选择插件所在的目录
+```css
+li {
+  font-size: 16px;
+  margin: 0;
+  line-height: 26px;
+  color: rgb(30 41 59);
+  font-family:-apple-system-font,BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB , Microsoft YaHei UI , Microsoft YaHei ,Arial,sans-serif;
+}
+```
 
+### 支持内联代码
 
-# 使用方法
+Inline Code `{code: 0}`
 
-1. 打开微信公众平台，新建图文消息，复制文章到编辑器中
-2. 在右上角点击微信图标
-3. 点击弹出的模态框上的删除按钮
-4. 如果成功会在按钮后面提示`更改成功！！`
+### 支持表格
+
+表格无法使用自定义样式，暂时没找到解决途径
+
+| Header 1 | Header 2 |
+| --- | --- |
+| Key 1 | Value 1 |
+| Key 2 | Value 2 |
+| Key 3 | Value 3 |
+
+### 支持 GFM 脚注
+
+这是一个简单的脚注[^1]。 页面最后有一些额外的文字描述。注意这不是完整的注脚[^2]。
+
+[^1]: https://github.github.com/gfm/
+[^2]: 微信文章不支持锚点跳转和打开第三方 URL 超链接，所以不支持完整的注脚
+
+### 支持注释
+
+<ruby>
+  汉 <rp></rp><rt>Han</rt><rp></rp>
+  字 <rp></rp><rt>zi</rt><rp></rp>
+  拼 <rp></rp><rt>pin</rt><rp></rp>
+  音 <rp></rp><rt>yin</rt><rp></rp>
+  注 <rp></rp><rt>zhu</rt><rp></rp>
+  音 <rp></rp><rt>yin</rt><rp></rp>
+</ruby>
+
+## License
+
+Licensed under the MIT License.

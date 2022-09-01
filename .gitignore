@@ -1,11 +1,31 @@
+dist
+build
+lib
+cjs
+esm
+node_modules
+
+npm-debug.log*
+lerna-debug.log
+yarn-error.log
+package-lock.json
+
 .DS_Store
 .cache
 .vscode
+.idea
+.env
 
+*.mpassword
 *.bak
 *.tem
 *.temp
 #.swp
 *.*~
 ~*.*
-*.crx
+
+# IDEA
+*.iml
+*.ipr
+*.iws
+.idea/
