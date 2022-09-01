@@ -73,10 +73,10 @@ blockquote {
   font-size:14px;
   font-style:normal;
   border-left:none;
-  padding:1em;
+  padding:0.1rem 1rem;
   border-radius:4px;
   background:rgba(27,31,35,.05);
-  margin:2em 8px;
+  margin: 1rem 0;
 }
 
 pre {
