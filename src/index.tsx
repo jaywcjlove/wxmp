@@ -5,6 +5,7 @@ import BackToUp from '@uiw/react-back-to-top';
 import { Toaster } from 'react-hot-toast';
 import { createGlobalStyle } from 'styled-components';
 import App from './App';
+import { Provider } from './store/context';
 
 export const GlobalStyle = createGlobalStyle`
   [data-color-mode*='dark'], [data-color-mode*='dark'] body {
@@ -56,6 +57,8 @@ root.render(
     <Toaster />
     <BackToUp>Top</BackToUp>
     <GlobalStyle />
-    <App />
+    <Provider>
+      <App />
+    </Provider>
   </HashRouter>,
 );

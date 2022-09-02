@@ -27,7 +27,6 @@ export function markdownToHTML(md: string, css: string, options: MarkdownToHTMLO
   });
   // @ts-ignore
   const data = cssdata(ast.children.head);
-  console.log(data)
   const processor = unified()
     .use(remarkParse)
     .use(remarkGfm)

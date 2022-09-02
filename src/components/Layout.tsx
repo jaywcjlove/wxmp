@@ -31,6 +31,7 @@ const Title = styled.h1`
   margin: 0;
   display: flex;
   align-items: center;
+  user-select: none;
   sup {
     color: var(--color-fg-subtle);
     margin-left: 0.4rem;
@@ -38,6 +39,8 @@ const Title = styled.h1`
     border-radius: 0.1rem;
     padding: 0 0.2rem;
     font-weight: normal;
+    font-size: 0.1rem;
+    letter-spacing: -0.1rem;
   }
 `;
 
@@ -46,7 +49,7 @@ const Section = styled.section`
   align-items: center;
   gap: 0.8rem;
   dark-mode {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
   a svg {
     display: block;
@@ -67,7 +70,7 @@ export function Layout() {
         <Section>
           <dark-mode permanent dark="Dark" light="Light" />
           <a href="https://github.com/jaywcjlove/wxmp" target="__blank">
-            <GithubIcon width={28} height={28} />
+            <GithubIcon width={23} height={23} />
           </a>
         </Section>
       </Header>
