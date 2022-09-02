@@ -4,7 +4,24 @@ import styled from 'styled-components';
 import { Context } from '../../store/context';
 
 const Select = styled.select`
-  max-width: 3rem;
+  max-width: 4rem;
+  padding: 0;
+  appearance: none;
+  background-color: var(--color-border-muted);
+  border: none;
+  padding: 0 0.2rem 0 0.2rem;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.3rem;
+  outline: none;
+  height: 1.15rem;
+  cursor: inherit;
+  line-height: inherit;
+  border-radius: 0.2rem;
+  &::-ms-expand {
+    display: none;
+  }
 `;
 
 const ThemeView: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & ToolBarProps }> = (props) => {

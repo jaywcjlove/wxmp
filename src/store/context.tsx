@@ -13,7 +13,8 @@ import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { sublime } from '@uiw/codemirror-theme-sublime';
 import { xcodeLight, xcodeDark } from '@uiw/codemirror-theme-xcode';
 
-export const themes = { abcdef, androidstudio, atomone, bbedit, bespin, darcula, dracula, duotoneLight, duotoneDark, eclipse,
+export const themes = {
+  abcdef, androidstudio, atomone, bbedit, bespin, darcula, dracula, duotoneLight, duotoneDark, eclipse,
   githubLight, githubDark, okaidia, sublime, xcodeLight, xcodeDark
 }
 
