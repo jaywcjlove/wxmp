@@ -14,4 +14,4 @@ const Warpper = styled.div`
 export const Preview = (props: MarkdownPreviewProps, visible: boolean) => {
   const html = markdownToHTML(props.source || '', def);
   return <Warpper dangerouslySetInnerHTML={{ __html: html }} />;
-}
+};

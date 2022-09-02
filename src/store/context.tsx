@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { abcdef } from '@uiw/codemirror-theme-abcdef';
 import { androidstudio } from '@uiw/codemirror-theme-androidstudio';
 import { atomone } from '@uiw/codemirror-theme-atomone';
@@ -14,9 +14,23 @@ import { sublime } from '@uiw/codemirror-theme-sublime';
 import { xcodeLight, xcodeDark } from '@uiw/codemirror-theme-xcode';
 
 export const themes = {
-  abcdef, androidstudio, atomone, bbedit, bespin, darcula, dracula, duotoneLight, duotoneDark, eclipse,
-  githubLight, githubDark, okaidia, sublime, xcodeLight, xcodeDark
-}
+  abcdef,
+  androidstudio,
+  atomone,
+  bbedit,
+  bespin,
+  darcula,
+  dracula,
+  duotoneLight,
+  duotoneDark,
+  eclipse,
+  githubLight,
+  githubDark,
+  okaidia,
+  sublime,
+  xcodeLight,
+  xcodeDark,
+};
 
 export type ThemeValue = keyof typeof themes;
 
@@ -28,21 +42,23 @@ export interface CreateContext {
 }
 
 export const Context = React.createContext<CreateContext>({
-  css: "",
+  css: '',
   setCss: () => {},
   theme: 'githubLight',
   setTheme: () => {},
 });
 
 export const Provider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [css, setCss] = React.useState("");
-  const [theme, setTheme] = React.useState<ThemeValue>("githubLight");
+  const [css, setCss] = React.useState('');
+  const [theme, setTheme] = React.useState<ThemeValue>('githubLight');
 
   return (
     <Context.Provider
       value={{
-        css, setCss,
-        theme, setTheme,
+        css,
+        setCss,
+        theme,
+        setTheme,
       }}
     >
       {children}

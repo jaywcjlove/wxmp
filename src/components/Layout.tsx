@@ -4,8 +4,7 @@ import '@wcj/dark-mode';
 import { ReactComponent as LogoIcon } from '../assets/logo.svg';
 import { ReactComponent as GithubIcon } from '../assets/github.svg';
 
-const Warpper = styled.div`
-`;
+const Warpper = styled.div``;
 
 const Header = styled.header`
   display: flex;
@@ -27,7 +26,7 @@ const Logo = styled(LogoIcon)`
 `;
 
 const Title = styled.h1`
-  font-size: 1.0rem;
+  font-size: 1rem;
   margin: 0;
   display: flex;
   align-items: center;

@@ -1,6 +1,6 @@
 import MarkdownEditor, { getCommands } from '@uiw/react-markdown-editor';
 import { useContext } from 'react';
-import { EditorView } from "@codemirror/view";
+import { EditorView } from '@codemirror/view';
 import styled from 'styled-components';
 import { Preview } from './Preview';
 import { copy } from './copy';
@@ -29,4 +29,4 @@ export const HomePage = () => {
       />
     </Warpper>
   );
-}
+};
