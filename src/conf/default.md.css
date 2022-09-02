@@ -163,6 +163,21 @@ th {
   font-size: 12px;
 }
 
+figure {
+  margin: 0;
+}
+
+.image-warpper {
+  text-align: center;
+  margin-bottom: 0rem;
+  visibility: visible;
+}
+
+.image {
+  display: initial;
+  max-width: 100%;
+}
+
 .comment { color: #6a737d; }
 .property { color: #6f42c1; }
 .function { color: #6f42c1; }

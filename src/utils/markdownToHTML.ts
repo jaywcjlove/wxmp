@@ -7,9 +7,11 @@ import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeRaw from 'rehype-raw';
+import rehypeAttrs from 'rehype-attr';
+import rehypeIgnore from 'rehype-ignore';
 import rehypeRewrite from 'rehype-rewrite';
 import stringify from 'rehype-stringify';
-import { cssdata, spaceEscape, footnotes, footnotesLabel } from './css';
+import { cssdata, spaceEscape, footnotes, footnotesLabel, imagesStyle } from './css';
 
 export type MarkdownToHTMLOptions = {
 
@@ -25,14 +27,18 @@ export function markdownToHTML(md: string, css: string, options: MarkdownToHTMLO
   });
   // @ts-ignore
   const data = cssdata(ast.children.head);
+  console.log(data)
   const processor = unified()
     .use(remarkParse)
+    .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypePrism)
-    .use(remarkGfm)
     .use(rehypeRaw)
+    .use(rehypeIgnore, { })
+    .use(rehypeAttrs, { properties: 'attr' })
     .use(rehypeRewrite, {
       rewrite: (node, index, parent) => {
+        // @ts-ignore
         if (node?.type === 'element' && node?.tagName === 'code' && parent?.type === 'element' && parent?.tagName === 'pre') {
           spaceEscape(node)
         }
@@ -42,17 +48,23 @@ export function markdownToHTML(md: string, css: string, options: MarkdownToHTMLO
         if (node?.type === 'element' && node.tagName === 'sup') {
           footnotesLabel(node)
         }
+        if (node?.type === 'element' && node.tagName === 'img') {
+          imagesStyle(node, parent)
+        }
+        // Code Spans style
         if (node?.type === 'element' && node?.tagName === 'code' && parent?.type === 'element' && parent?.tagName !== 'pre') {
           if (!node.properties) node.properties = {}
           node.properties!.className = ['code-spans'];
         }
-        if (node?.type === 'element') {
-          if (node.tagName === 'input' && parent?.type === 'element') {
-            if (parent && parent.type === 'element') {
-              parent.children = parent?.children.filter(elm => (elm as Element).tagName !== 'input')
-            }
-            return;
+        // List TODO style
+        if (parent?.type === 'element' &&  node?.type === 'element' && node?.tagName === 'input') {
+          if (parent && parent.type === 'element') {
+            parent.children = parent?.children.filter(elm => (elm as Element).tagName !== 'input')
           }
+          return;
+        }
+        // Support *.md.css
+        if (node?.type === 'element') {
           if (!node.properties) {
             node.properties = {};
           }
@@ -67,7 +79,7 @@ export function markdownToHTML(md: string, css: string, options: MarkdownToHTMLO
           }
           if (!style) style = data[node.tagName];
           if (style) {
-            node.properties.style = style;
+            node.properties.style = style + (node.properties.style || '');
           }
         }
       }

@@ -4,7 +4,9 @@
 
 </div>
 
-微信公众号文章 Markdown 编辑器，使用 markdown 语法创建一篇简介美观大方的微信公众号图文。由于发版本麻烦，和一些功能无法扩展停滞开发了，未来不再开发 Chrome 的工具(暂存在 chrome 分支)，通过 web 版本定制更丰富的功能。
+![](https://user-images.githubusercontent.com/1680273/187980169-e648f2a4-41f0-496f-8450-7f5ffc255059.png)
+
+微信公众号文章 Markdown 在线编辑器，使用 markdown 语法创建一篇简介美观大方的微信公众号图文。由于发版本麻烦，和一些功能无法扩展停滞开发了，未来不再开发 Chrome 的工具(暂存在 chrome 分支)，通过 web 版本定制更丰富的功能。
 
 ## 功能特性
 
@@ -56,10 +58,11 @@ Inline Code `{code: 0}`
 
 ### 支持 GFM 脚注
 
-这是一个简单的脚注[^1]。 页面最后有一些额外的文字描述。注意这不是完整的注脚[^2]。
+这是一个简单的 Markdown[^1] 语法的脚注[^2]。 页面最后有一些额外的文字描述。注意这不是完整的注脚[^3]特性。
 
-[^1]: https://github.github.com/gfm/
-[^2]: 微信文章不支持锚点跳转和打开第三方 URL 超链接，所以不支持完整的注脚
+[^1]: GitHub 风格的 Markdown 规范 https://github.github.com/gfm/
+[^2]: 脚注 https://github.blog/changelog/2021-09-30-footnotes-now-supported-in-markdown-fields/
+[^3]: 微信文章不支持锚点跳转和打开第三方 URL 超链接，所以不支持完整的注脚特性。
 
 ### 支持注释
 
@@ -71,6 +74,31 @@ Inline Code `{code: 0}`
   注 <rp></rp><rt>zhu</rt><rp></rp>
   音 <rp></rp><rt>yin</rt><rp></rp>
 </ruby>
+
+### 支持自定义样式
+<!--rehype:style=color: red;-->
+
+在 Markdown 中 HTML 注释也可以用在 markdown 中，利用这一特点，为一些内容自定一样式。使用 HTML 注释 `<!--rehype:xxx-->`<!--rehype:style=color: red;background: #ff000033;--> 让 Markdown 支持样式自定义。
+
+```markdown
+## 定义标题样式
+<!--rehype:style=display: flex; height: 230px; align-items: center; justify-content: center; font-size: 38px;-->
+
+支持对某些文字变更样式，如_文字颜色_<!--rehype:style=color: red;-->，文字颜色将被设置为红色(red)。
+```
+
+⚠️ 注意：这一特性可能适用于有一定 css 前端基础知识的用户，不过它也非常简单，使用 `<!--rehype:style=` 开始，`-->` 结束，中间包裹 css 样式，如 `color: red;` 设置文字红色。
+
+
+### 标记忽略内容
+
+此特性利用 HTML 注释在 markdown 中被忽略的特性，标记需要忽略的内容，标记开始 `<!--rehype:ignore:start-->`，标记结束 `<!--rehype:ignore:end-->`，被标记的内容在微信 Markdown 编辑器预览中不显示。在其它预览工具中展示内容，比如 GitHub 中能展示。
+
+```markdown
+# 注释忽略
+
+<!--rehype:ignore:start-->内容在微信 Markdown 编辑器预览中不显示。在其它预览工具中展示内容。<!--rehype:ignore:end-->
+```
 
 ## 部署
 
@@ -98,16 +126,19 @@ docker run --name wxmp -itd -p 96611:3000 ghcr.io/jaywcjlove/wxmp:latest
 http://localhost:96611/
 ```
 
-## Contributors
+## 贡献者
 
-As always, thanks to our amazing contributors!
+一如既往，感谢我们出色的贡献者！
 
 <a href="https://github.com/jaywcjlove/wxmp/graphs/contributors">
   <img src="https://jaywcjlove.github.io/wxmp/CONTRIBUTORS.svg" />
 </a>
 
-Made with [github-action-contributors](https://github.com/jaywcjlove/github-action-contributors).
+上图贡献者列表，由 [action-contributors](https://github.com/jaywcjlove/github-action-contributors)[^4] 自动生成贡献者图片。
+
+
+[^4]: Action Contributors https://github.com/jaywcjlove/github-action-contributors
 
 ## License
 
-Licensed under the MIT License.
+根据 MIT 许可证获得许可。

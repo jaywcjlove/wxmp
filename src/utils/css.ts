@@ -1,4 +1,4 @@
-import { RootContent, Element, Text } from 'hast';
+import { RootContent, Element, Text, Root } from 'hast';
 
 export const getBlock = (data: any, str: string = '') => {
   if (data && data.data && data.data.type === 'Declaration') {
@@ -87,4 +87,14 @@ export const footnotesLabel = (node: Element) => {
     type: 'text',
     value: `[${label}]`
   }];
+}
+
+export const imagesStyle = (node: Element, parent: Root | Element | null) => {
+  if (parent?.type === 'element' && parent.tagName === 'p' && node?.type === 'element' && node.tagName === 'img') {
+    parent.tagName = 'figure';
+    if (!parent.properties) parent.properties = {}
+    parent.properties.className = ['image-warpper']
+    if (!node.properties) node.properties = {}
+    node.properties.className = ['image']
+  }
 }

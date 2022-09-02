@@ -20,6 +20,8 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.3.0",
     "react-router-dom": "^6.3.0",
+    "rehype-attr": "^2.0.8",
+    "rehype-ignore": "^1.0.1",
     "rehype-prism-plus": "^1.5.0",
     "rehype-raw": "^6.1.1",
     "rehype-stringify": "^9.0.3",
