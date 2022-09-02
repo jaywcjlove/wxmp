@@ -48,7 +48,9 @@ const Section = styled.section`
   align-items: center;
   gap: 0.8rem;
   dark-mode {
-    font-size: 1.2rem;
+    font-size: 1.05rem;
+    display: block;
+    line-height: 12px;
   }
   a svg {
     display: block;

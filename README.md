@@ -14,7 +14,7 @@
 
 - [x] 支持 Markdown 所有基础语法
 - [x] 支持自定义 CSS 样式
-- [ ] 支持主题选择 & 配置。
+- [x] 支持主题选择 & 配置。
 - [x] 支持明暗两种主题预览。
 - [ ] 支持色盘取色，快速替换文章整体色调
 
@@ -98,6 +98,54 @@ Inline Code `{code: 0}`
 # 注释忽略
 
 <!--rehype:ignore:start-->内容在微信 Markdown 编辑器预览中不显示。在其它预览工具中展示内容。<!--rehype:ignore:end-->
+```
+
+## 主题定制
+
+在目录 `src/themes` 中存放默认主题，主题使用 css 定义样式，不支持复杂的选择器。
+
+```css
+/* 1~6 标题样式定义 */
+h1 {} h2 {} h3 {} h4 {} h5 {} h6 {}
+a { color: red; } /* 超链接样式定义 */
+del {} /* 删除线样式定义 */
+em {}  /* 下划线样式定义 */
+strong {} /* 加粗样式定义 */
+u {}    /* 下划线样式定义 */
+p {}    /* 段落样式定义 */
+ul {}   /* 无序列表样式定义 */
+ol {}   /* 有序列表样式定义 */
+li {}   /* 列表条目样式定义 */
+blockquote {} /* 块级引用样式定义 */
+table {}
+td {}
+th {}
+pre {}        /* 样式定义 */
+.code-highlight {} /* 代码块样式定义 */
+.code-line {}      /* 代码块行样式定义 */
+.code-spans {}     /* 代码块行样式定义 */
+
+sup {} /* GFM 脚注样式定义 */
+.footnotes-title {} /* GFM 脚注，参考标题样式定义 */
+.footnotes-list {} /* GFM 脚注，参考列表样式定义 */
+
+.image-warpper {} /* 图片父节点样式定义 */
+.image {} /* 图片样式定义 */
+
+/* 部分代码高亮样式 */
+.comment {}
+.property {}
+.function {}
+.keyword {}
+.punctuation {}
+.unit {}
+.tag {}
+.color {}
+.selector {}
+.quote {}
+.number {}
+.attr-name {}
+.attr-value {}
 ```
 
 ## 部署

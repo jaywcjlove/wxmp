@@ -1,4 +1,5 @@
 import React from 'react';
+import { defaultTheme } from '@uiw/react-markdown-editor';
 import { abcdef } from '@uiw/codemirror-theme-abcdef';
 import { androidstudio } from '@uiw/codemirror-theme-androidstudio';
 import { atomone } from '@uiw/codemirror-theme-atomone';
@@ -12,45 +13,116 @@ import { githubLight, githubDark } from '@uiw/codemirror-theme-github';
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { sublime } from '@uiw/codemirror-theme-sublime';
 import { xcodeLight, xcodeDark } from '@uiw/codemirror-theme-xcode';
+import defStyle from '../themes/default.md.css';
+import simpleStyle from '../themes/simple.md.css';
+import underscoreStyle from '../themes/underscore.md.css';
 
 export const themes = {
-  abcdef,
-  androidstudio,
-  atomone,
-  bbedit,
-  bespin,
-  darcula,
-  dracula,
-  duotoneLight,
-  duotoneDark,
-  eclipse,
-  githubLight,
-  githubDark,
-  okaidia,
-  sublime,
-  xcodeLight,
-  xcodeDark,
+  default: {
+    label: '默认主题',
+    value: defaultTheme,
+  },
+  abcdef: {
+    label: 'Abcdef Theme',
+    value: abcdef,
+  },
+  androidstudio: {
+    label: 'Android Studio Theme',
+    value: androidstudio,
+  },
+  atomone: {
+    label: 'Atomone Theme',
+    value: atomone,
+  },
+  bbedit: {
+    label: 'Bbedit Theme',
+    value: bbedit,
+  },
+  bespin: {
+    label: 'Bespin Theme',
+    value: bespin,
+  },
+  darcula: {
+    label: 'Darcula Theme',
+    value: darcula,
+  },
+  dracula: {
+    label: 'Dracula Theme',
+    value: dracula,
+  },
+  duotoneLight: {
+    label: 'Duotone Light Theme',
+    value: duotoneLight,
+  },
+  duotoneDark: {
+    label: 'Duotone Dark Theme',
+    value: duotoneDark,
+  },
+  eclipse: {
+    label: 'Eclipse Theme',
+    value: eclipse,
+  },
+  githubLight: {
+    label: 'Github Light Theme',
+    value: githubLight,
+  },
+  githubDark: {
+    label: 'Github Dark Theme',
+    value: githubDark,
+  },
+  okaidia: {
+    label: 'Okaidia Theme',
+    value: okaidia,
+  },
+  sublime: {
+    label: 'Sublime Theme',
+    value: sublime,
+  },
+  xcodeLight: {
+    label: 'Xcode Light Theme',
+    value: xcodeLight,
+  },
+  xcodeDark: {
+    label: 'Xcode Dark Theme',
+    value: xcodeDark,
+  },
+};
+
+export const previewThemes = {
+  default: {
+    label: '翡翠绿',
+    value: defStyle,
+  },
+  simple: {
+    label: '简洁蓝',
+    value: simpleStyle,
+  },
+  underscore: {
+    label: '下划线黄',
+    value: underscoreStyle,
+  },
 };
 
 export type ThemeValue = keyof typeof themes;
+export type PreviewThemeValue = keyof typeof previewThemes;
 
 export interface CreateContext {
-  css: string;
-  setCss: React.Dispatch<React.SetStateAction<string>>;
+  css: PreviewThemeValue;
+  setCss: React.Dispatch<React.SetStateAction<PreviewThemeValue>>;
   theme: ThemeValue;
   setTheme: React.Dispatch<React.SetStateAction<ThemeValue>>;
 }
 
 export const Context = React.createContext<CreateContext>({
-  css: '',
+  css: 'default',
   setCss: () => {},
-  theme: 'githubLight',
+  theme: 'default',
   setTheme: () => {},
 });
 
 export const Provider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [css, setCss] = React.useState('');
-  const [theme, setTheme] = React.useState<ThemeValue>('githubLight');
+  const [css, setCss] = React.useState<PreviewThemeValue>('underscore');
+  const [theme, setTheme] = React.useState<ThemeValue>('default');
 
   return (
     <Context.Provider

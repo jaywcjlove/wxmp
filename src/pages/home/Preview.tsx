@@ -1,6 +1,7 @@
 import { MarkdownPreviewProps } from '@uiw/react-markdown-preview';
 import styled from 'styled-components';
-import def from '../../conf/default.md.css';
+import { useContext } from 'react';
+import { Context, previewThemes } from '../../store/context';
 
 import { markdownToHTML } from '../../utils/markdownToHTML';
 
@@ -11,7 +12,8 @@ const Warpper = styled.div`
   min-height: 100%;
 `;
 
-export const Preview = (props: MarkdownPreviewProps, visible: boolean) => {
-  const html = markdownToHTML(props.source || '', def);
+export const Preview = (props: MarkdownPreviewProps) => {
+  const { css } = useContext(Context);
+  const html = markdownToHTML(props.source || '', previewThemes[css].value);
   return <Warpper dangerouslySetInnerHTML={{ __html: html }} />;
 };
