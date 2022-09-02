@@ -161,6 +161,9 @@ th {
 
 .footnotes-list {
   font-size: 12px;
+  font-style: italic;
+  line-height: 1.2;
+  margin: 0.4rem 0;
 }
 
 figure {
