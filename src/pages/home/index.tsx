@@ -9,7 +9,7 @@ import { Context, themes } from '../../store/context';
 import data from '../../../README.md';
 
 const Warpper = styled.div`
-  height: calc(100vh - 2.8rem);
+  height: calc(100vh - 2.9rem);
 `;
 
 export const HomePage = () => {
@@ -25,7 +25,7 @@ export const HomePage = () => {
         extensions={[EditorView.lineWrapping]}
         renderPreview={Preview}
         visible={true}
-        height="calc(100vh - 4.9rem)"
+        height="calc(100vh - 4.92rem)"
       />
     </Warpper>
   );

@@ -90,8 +90,10 @@ export const footnotesLabel = (node: Element) => {
 }
 
 export const imagesStyle = (node: Element, parent: Root | Element | null) => {
-  if (parent?.type === 'element' && parent.tagName === 'p' && node?.type === 'element' && node.tagName === 'img') {
-    parent.tagName = 'figure';
+  if (parent?.type === 'element' && /(p|a)/.test(parent.tagName) && node?.type === 'element' && node.tagName === 'img') {
+    if (parent.tagName === 'p') {
+      parent.tagName = 'figure'
+    }
     if (!parent.properties) parent.properties = {}
     parent.properties.className = ['image-warpper']
     if (!node.properties) node.properties = {}
