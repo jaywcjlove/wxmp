@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React from 'react';
 import { defaultTheme } from '@uiw/react-markdown-editor';
 import { abcdef } from '@uiw/codemirror-theme-abcdef';
 import { androidstudio } from '@uiw/codemirror-theme-androidstudio';
@@ -115,6 +114,8 @@ export type ThemeValue = keyof typeof themes;
 export type PreviewThemeValue = keyof typeof previewThemes;
 
 export interface CreateContext {
+  isLoading: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   markdown: string;
   setMarkdown: React.Dispatch<React.SetStateAction<string>>;
   css: string;
@@ -126,6 +127,8 @@ export interface CreateContext {
 }
 
 export const Context = React.createContext<CreateContext>({
+  isLoading: true,
+  setIsLoading: () => {},
   markdown: data.source,
   setMarkdown: () => {},
   css: previewThemes['underscore'].value,
@@ -135,35 +138,3 @@ export const Context = React.createContext<CreateContext>({
   theme: 'default',
   setTheme: () => {},
 });
-
-export const Provider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const paramPreviewTheme = searchParams.get('theme') as PreviewThemeValue;
-  const initPreviewTheme = paramPreviewTheme || 'underscore';
-  const [markdown, setMarkdown] = React.useState<string>(data.source);
-  const [css, setCss] = React.useState<string>(previewThemes[initPreviewTheme].value);
-  const [previewTheme, setPreviewTheme] = React.useState<PreviewThemeValue>(initPreviewTheme);
-  const [theme, setTheme] = React.useState<ThemeValue>('default');
-  useEffect(() => {
-    if (paramPreviewTheme !== previewTheme) {
-      searchParams.set('theme', previewTheme);
-      setSearchParams(searchParams);
-    }
-  }, [paramPreviewTheme, previewTheme, searchParams, setSearchParams]);
-  return (
-    <Context.Provider
-      value={{
-        markdown,
-        setMarkdown,
-        css,
-        setCss,
-        previewTheme,
-        setPreviewTheme,
-        theme,
-        setTheme,
-      }}
-    >
-      {children}
-    </Context.Provider>
-  );
-};

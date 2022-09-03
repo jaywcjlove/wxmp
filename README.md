@@ -15,7 +15,7 @@
 - [x] 支持主题选择 & 编辑预览。
 - [x] 支持明暗两种主题预览。
 - [ ] 支持色盘取色，快速替换文章整体色调
-- [ ] 支持 URL 参数加载 Markdown 内容。
+- [x] 支持 URL 参数加载 Markdown 内容。
 - [x] 支持 URL 参数选择预览主题。
 
 ### 支持代码块样式
@@ -116,9 +116,9 @@ https://<URL>?md=<Markdown 资源 URL>
 加载 Markdown 内容的示例 URL：
 
 ```
-https://jaywcjlove.github.io/wxmp/#/?theme=underscore&md=https%3A%2F%2Fraw.githubusercontent.com%2Fuiwjs%2Freact-markdown-editor%2Fmaster%2FREADME.md
+https://jaywcjlove.github.io/wxmp/#/?theme=underscore&md=https://raw.githubusercontent.com/jaywcjlove/c-tutorial/master/README.md
 
-Markdown URL 地址: https://raw.githubusercontent.com/uiwjs/react-markdown-editor/master/README.md
+Markdown URL 地址: https://raw.githubusercontent.com/jaywcjlove/c-tutorial/master/README.md
 ```
 
 ## 主题定制

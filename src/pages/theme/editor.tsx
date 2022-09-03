@@ -12,8 +12,8 @@ import { Warpper } from '../home';
 
 export const EditorPage = () => {
   const commands = [themeTitle, themeCommand, previousCommand];
-  const toolbarsMode: IMarkdownEditor['toolbarsMode'] = [previeTheme, copy, 'preview', 'fullscreen'];
-  const { theme, css, setCss } = useContext(Context);
+  const toolbarsMode: IMarkdownEditor['toolbarsMode'] = [previeTheme, copy, 'fullscreen', 'preview'];
+  const { theme, css, setCss, isLoading } = useContext(Context);
   const value = themes[theme].value;
   const handleChange = (value: string) => setCss(value);
   return (
@@ -21,6 +21,7 @@ export const EditorPage = () => {
       <MarkdownEditor
         value={css}
         theme={value}
+        readOnly={isLoading}
         toolbars={commands}
         toolbarsMode={toolbarsMode}
         reExtensions={[EditorView.lineWrapping, cssLang()]}

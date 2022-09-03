@@ -14,16 +14,18 @@ export const Warpper = styled.div`
 
 export const HomePage = () => {
   const commands = [...getCommands(), themeCommand];
-  const { theme, markdown, setMarkdown } = useContext(Context);
+  const { theme, markdown, isLoading, setMarkdown } = useContext(Context);
   const themeValue = themes[theme].value;
   const handleChange = (value: string) => setMarkdown(value);
+  console.log(isLoading);
   return (
     <Warpper>
       <MarkdownEditor
         value={markdown}
         toolbars={commands}
         theme={themeValue}
-        toolbarsMode={[cssCommand, previeTheme, copy, 'preview', 'fullscreen']}
+        readOnly={isLoading}
+        toolbarsMode={[cssCommand, previeTheme, copy, 'fullscreen', 'preview']}
         extensions={[EditorView.lineWrapping]}
         renderPreview={Preview}
         onChange={handleChange}

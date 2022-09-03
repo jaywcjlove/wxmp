@@ -4,8 +4,9 @@ import { HashRouter } from 'react-router-dom';
 import BackToUp from '@uiw/react-back-to-top';
 import { Toaster } from 'react-hot-toast';
 import { createGlobalStyle } from 'styled-components';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import App from './App';
-import { Provider } from './store/context';
+import { Provider } from './store/Provider';
 
 export const GlobalStyle = createGlobalStyle`
   [data-color-mode*='dark'], [data-color-mode*='dark'] body {
@@ -52,6 +53,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const queryClient = new QueryClient();
 const style: React.CSSProperties = { zIndex: 999 };
 
 const container = document.getElementById('root');
@@ -61,8 +63,10 @@ root.render(
     <Toaster />
     <BackToUp style={style}>Top</BackToUp>
     <GlobalStyle />
-    <Provider>
-      <App />
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <Provider>
+        <App />
+      </Provider>
+    </QueryClientProvider>
   </HashRouter>,
 );
