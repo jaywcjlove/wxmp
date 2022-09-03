@@ -16,6 +16,7 @@ import { xcodeLight, xcodeDark } from '@uiw/codemirror-theme-xcode';
 import defStyle from '../themes/default.md.css';
 import simpleStyle from '../themes/simple.md.css';
 import underscoreStyle from '../themes/underscore.md.css';
+import baseStyle from '../themes/base.md.css';
 
 import data from '../../README.md';
 
@@ -102,6 +103,10 @@ export const previewThemes = {
   underscore: {
     label: '下划线黄',
     value: underscoreStyle,
+  },
+  base: {
+    label: '简洁',
+    value: baseStyle,
   },
 };
 

@@ -1,81 +1,42 @@
 a {
-  color: #576b95;
+  color: inherit;
   text-decoration: none;
-  font-size: 14px;
 }
 
 h1 {
-  display: table;
-  text-align: center;
-  color: #3f3f3f;
-  line-height: 1.15;
-  font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB',
-    'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
-  font-size: 1.3em;
-  font-weight: bold;
-  margin: 2em auto 1em;
-  padding: 0 1em 0.3em 1em;
-  margin-top: 0;
-  box-shadow: inset 0 -0.9rem 0 0 #ffb11b;
+  color: inherit;
+  font-size: 1.5rem;
 }
 
 h2 {
-  display: table;
-  line-height: 1.35;
-  font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB',
-    'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
-  font-size: 1.2em;
-  font-weight: bold;
-  padding: 0 0.3em;
-  margin: 2em 0 1em 0;
-  box-shadow: inset 0 -0.7rem 0 0 #ffb11b;
-}
-
-p {
-  font-size: 14px;
+  color: inherit;
+  margin: 2.5rem 0 1rem 0;
 }
 
 h3 {
-  text-align: left;
-  color: #3f3f3f;
-  line-height: 1.2;
-  font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB',
-    'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
-  font-size: 1.1em;
-  font-weight: bold;
-  margin: 2em 8px 0.75em 0;
-  padding-left: 8px;
-  border-left: 5px solid #ffb11b;
+  color: inherit;
+  margin: 2rem 0 1rem 0;
+}
+
+p {
+  color: initial;
 }
 
 ul {
   padding-left: 1.2em;
-  font-size: 14px;
 }
 
 ol {
   padding-left: 1.2em;
-  font-size: 14px;
 }
 
 li {
   margin: 0;
-  line-height: 26px;
-  color: rgb(30 41 59);
-  font-size: 14px;
 }
 
 blockquote {
-  text-align: left;
-  line-height: 1.75;
-  font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB',
-    'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
-  font-size: 14px;
   font-style: normal;
   border-left: none;
-  padding: 0.1rem 1rem;
-  border-radius: 4px;
-  background: rgba(27, 31, 35, 0.05);
   margin: 1rem 0;
 }
 
@@ -86,22 +47,9 @@ pre {
   color: rgb(51, 51, 51);
   background: rgb(248, 248, 248);
   font-size: 14px;
-  font-style: normal;
-  font-variant-ligatures: normal;
-  font-variant-caps: normal;
   font-weight: 400;
   letter-spacing: normal;
-  orphans: 2;
-  text-indent: 0px;
-  text-transform: none;
-  widows: 2;
   word-spacing: 0px;
-  text-decoration-style: initial;
-  text-decoration-color: initial;
-  text-align: left;
-  line-height: 1.5;
-  font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB',
-    'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
   border-radius: 5px;
   margin: 0.9rem 0;
   white-space: pre;
@@ -127,7 +75,6 @@ th {
 
 .code-highlight {
   text-align: left;
-  line-height: 1.75;
   font-family: Menlo, 'Operator Mono', Consolas, Monaco, monospace;
   font-size: 14px;
   margin: 0px;
@@ -143,12 +90,10 @@ th {
   text-align: left;
   line-height: 1;
   white-space: pre;
-  color: #ffb11b;
   background: rgba(27, 31, 35, 0.05);
   padding: 0.2rem 0.3rem;
   border-radius: 4px;
   font-weight: bold;
-  font-size: 14px;
 }
 
 .footnotes-title {
