@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 import { Outlet, NavLink } from 'react-router-dom';
 import '@wcj/dark-mode';
+import { useContext } from 'react';
 import { ReactComponent as LogoIcon } from '../assets/logo.svg';
 import { ReactComponent as GithubIcon } from '../assets/github.svg';
+import { ReactComponent as Loading } from '../assets/tail-spin.svg';
+import { Context } from '../store/context';
 
 const Warpper = styled.div``;
 
@@ -75,6 +78,7 @@ const Section = styled.section`
 `;
 
 export function Layout() {
+  const { isLoading } = useContext(Context);
   return (
     <Warpper className="wmde-markdown-color">
       <Header>
@@ -84,6 +88,7 @@ export function Layout() {
             微信公众号排版编辑器
             <sup> v{VERSION} </sup>
           </Title>
+          {isLoading && <Loading />}
         </Article>
         <Section>
           <NavLink to="/">首页</NavLink>
