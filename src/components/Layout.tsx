@@ -51,6 +51,7 @@ const Section = styled.section`
     font-size: 1.05rem;
     display: block;
     line-height: 12px;
+    margin-left: 0.6rem;
   }
   a svg {
     display: block;
