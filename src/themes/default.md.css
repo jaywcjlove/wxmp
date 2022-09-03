@@ -102,7 +102,7 @@ pre {
   line-height: 1.5;
   font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB',
     'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
-  border-radius: 5px;
+  border-radius: 0.3em;
   margin: 0.9rem 0;
   white-space: pre;
 }
@@ -145,10 +145,10 @@ th {
   white-space: pre;
   color: #009874;
   background: rgba(27, 31, 35, 0.05);
-  padding: 0.2em 0.3em;
-  border-radius: 4px;
+  padding: 0.2em 0.6em;
+  border-radius: 0.6em;
   font-weight: bold;
-  font-size: 0.85em;
+  font-size: 0.45em;
 }
 
 .footnotes-title {
@@ -162,7 +162,7 @@ th {
 }
 
 .footnotes-list {
-  font-size: 12px;
+  font-size: 0.75em;
   font-style: italic;
   line-height: 1.2;
   margin: 0.4rem 0;

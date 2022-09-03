@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { defaultTheme } from '@uiw/react-markdown-editor';
 import { abcdef } from '@uiw/codemirror-theme-abcdef';
 import { androidstudio } from '@uiw/codemirror-theme-androidstudio';
@@ -136,11 +137,19 @@ export const Context = React.createContext<CreateContext>({
 });
 
 export const Provider: React.FC<React.PropsWithChildren> = ({ children }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const paramPreviewTheme = searchParams.get('theme') as PreviewThemeValue;
+  const initPreviewTheme = paramPreviewTheme || 'underscore';
   const [markdown, setMarkdown] = React.useState<string>(data.source);
-  const [css, setCss] = React.useState<string>(previewThemes['underscore'].value);
-  const [previewTheme, setPreviewTheme] = React.useState<PreviewThemeValue>('underscore');
+  const [css, setCss] = React.useState<string>(previewThemes[initPreviewTheme].value);
+  const [previewTheme, setPreviewTheme] = React.useState<PreviewThemeValue>(initPreviewTheme);
   const [theme, setTheme] = React.useState<ThemeValue>('default');
-
+  useEffect(() => {
+    if (paramPreviewTheme !== previewTheme) {
+      searchParams.set('theme', previewTheme);
+      setSearchParams(searchParams);
+    }
+  }, [paramPreviewTheme, previewTheme, searchParams, setSearchParams]);
   return (
     <Context.Provider
       value={{

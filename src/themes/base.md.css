@@ -32,6 +32,7 @@ h4 {
 
 p {
   color: initial;
+  font-size: 0.85em;
 }
 
 ul {
@@ -44,12 +45,13 @@ ol {
 
 li {
   margin: 0;
+  font-size: 0.85em;
 }
 
 blockquote {
   font-style: normal;
   border-left: none;
-  margin: 1rem 0;
+  margin: 1em 0;
 }
 
 pre {
@@ -58,7 +60,7 @@ pre {
   padding: 1em;
   color: rgb(51, 51, 51);
   background: rgb(248, 248, 248);
-  font-size: 14px;
+  font-size: 0.85em;
   font-weight: 400;
   letter-spacing: normal;
   word-spacing: 0px;
@@ -71,7 +73,7 @@ table {
   width: 100% !important;
   border-collapse: collapse;
   line-height: 1.35;
-  font-size: 90%;
+  font-size: 0.85em;
 }
 
 td {
@@ -88,7 +90,7 @@ th {
 .code-highlight {
   text-align: left;
   font-family: Menlo, 'Operator Mono', Consolas, Monaco, monospace;
-  font-size: 14px;
+  font-size: 0.85em;
   margin: 0px;
   white-space: nowrap;
 }
@@ -103,23 +105,24 @@ th {
   line-height: 1;
   white-space: pre;
   background: rgba(27, 31, 35, 0.05);
-  padding: 0.2rem 0.3rem;
-  border-radius: 4px;
+  padding: 0.2em 0.6em;
+  border-radius: 0.6em;
   font-weight: bold;
+  font-size: 0.45em;
 }
 
 .footnotes-title {
   display: table;
   font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB',
     'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: bold;
   margin: 3rem 0 0.6rem 0;
   padding-left: 0.2rem;
 }
 
 .footnotes-list {
-  font-size: 12px;
+  font-size: 0.75em;
   font-style: italic;
   line-height: 1.2;
   margin: 0.4rem 0;
