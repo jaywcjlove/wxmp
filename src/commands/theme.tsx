@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ICommand, IMarkdownEditor, ToolBarProps } from '@uiw/react-markdown-editor';
 import styled from 'styled-components';
-import { Context, previewThemes, PreviewThemeValue, themes as editorThemes, ThemeValue } from '../../store/context';
+import { Context, previewThemes, PreviewThemeValue, themes as editorThemes, ThemeValue } from '../store/context';
 
 const Select = styled.select`
   max-width: 4rem;
@@ -46,10 +46,15 @@ export const theme: ICommand = {
 };
 
 const ThemePreviewView: React.FC<{}> = () => {
-  const { css, setCss } = useContext(Context);
-  const handleChange = (ev: React.ChangeEvent<HTMLSelectElement>) => setCss(ev.target.value as any);
+  const { setCss, previewTheme, setPreviewTheme } = useContext(Context);
+  const handleChange = (ev: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = ev.target.value as PreviewThemeValue;
+    console.log('vvvv');
+    setPreviewTheme(value);
+    setCss(previewThemes[value].value);
+  };
   return (
-    <Select value={css} onChange={handleChange}>
+    <Select value={previewTheme} onChange={handleChange}>
       {(Object.keys(previewThemes) as Array<PreviewThemeValue>).map((name, key) => {
         return (
           <option value={name} key={key}>

@@ -5,6 +5,7 @@ a {
 }
 
 h1 {
+  display: table;
   text-align: center;
   color: #3f3f3f;
   line-height: 1.75;
@@ -12,7 +13,6 @@ h1 {
     'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
   font-size: 1.2em;
   font-weight: bold;
-  display: table;
   margin: 2em auto 1em;
   padding: 0 1em;
   border-bottom: 2px solid #009874;
@@ -20,6 +20,7 @@ h1 {
 }
 
 h2 {
+  display: table;
   text-align: center;
   color: #fff;
   line-height: 1.75;
@@ -27,7 +28,6 @@ h2 {
     'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
   font-size: 1.2em;
   font-weight: bold;
-  display: table;
   margin: 4em auto 2em;
   padding: 0 0.3em;
   border-radius: 0.3rem;
@@ -156,11 +156,11 @@ th {
 }
 
 .footnotes-title {
+  display: table;
   font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB',
     'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
   font-size: 1rem;
   font-weight: bold;
-  display: table;
   margin: 3rem 0 0.6rem 0;
   padding-left: 0.2rem;
 }

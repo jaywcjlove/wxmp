@@ -13,7 +13,7 @@ const Warpper = styled.div`
 `;
 
 export const Preview = (props: MarkdownPreviewProps) => {
-  const { css } = useContext(Context);
-  const html = markdownToHTML(props.source || '', css);
+  const { css, markdown } = useContext(Context);
+  const html = markdownToHTML(markdown, css);
   return <Warpper dangerouslySetInnerHTML={{ __html: html }} />;
 };

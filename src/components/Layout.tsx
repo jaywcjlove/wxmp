@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Outlet } from 'react-router-dom';
+import { Outlet, NavLink } from 'react-router-dom';
 import '@wcj/dark-mode';
 import { ReactComponent as LogoIcon } from '../assets/logo.svg';
 import { ReactComponent as GithubIcon } from '../assets/github.svg';
@@ -11,7 +11,7 @@ const Header = styled.header`
   flex-direction: row;
   justify-content: space-between;
   border-bottom: 1px solid var(--color-border-muted);
-  padding: 0.5rem 1rem 0.5rem 1rem;
+  padding: 0.5rem 0.6rem 0.5rem 1rem;
 `;
 
 const Article = styled.article`
@@ -46,7 +46,7 @@ const Title = styled.h1`
 const Section = styled.section`
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.5rem;
   dark-mode {
     font-size: 1.05rem;
     display: block;
@@ -54,6 +54,22 @@ const Section = styled.section`
   }
   a svg {
     display: block;
+  }
+  a {
+    text-decoration: none;
+    color: var(--color-theme-text);
+    padding: 0.1rem 0.3rem;
+    box-shadow: inset 0 0 0 var(--color-accent-fg);
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    &.active {
+      box-shadow: inset 0 -0.3rem 0 var(--color-accent-fg);
+    }
+    &:hover:not(.active):not(:last-child) {
+      box-shadow: inset 0 -1.5rem 0 var(--color-accent-fg);
+      color: #fff;
+      border-radius: 0.2rem;
+    }
   }
 `;
 
@@ -69,6 +85,8 @@ export function Layout() {
           </Title>
         </Article>
         <Section>
+          <NavLink to="/">首页</NavLink>
+          <NavLink to="/editor/theme">编辑主题</NavLink>
           <dark-mode permanent dark="Dark" light="Light" />
           <a href="https://github.com/jaywcjlove/wxmp" target="__blank">
             <GithubIcon width={23} height={23} />

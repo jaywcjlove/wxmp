@@ -17,6 +17,8 @@ import defStyle from '../themes/default.md.css';
 import simpleStyle from '../themes/simple.md.css';
 import underscoreStyle from '../themes/underscore.md.css';
 
+import data from '../../README.md';
+
 export const themes = {
   default: {
     label: '默认主题',
@@ -107,28 +109,42 @@ export type ThemeValue = keyof typeof themes;
 export type PreviewThemeValue = keyof typeof previewThemes;
 
 export interface CreateContext {
-  css: PreviewThemeValue;
-  setCss: React.Dispatch<React.SetStateAction<PreviewThemeValue>>;
+  markdown: string;
+  setMarkdown: React.Dispatch<React.SetStateAction<string>>;
+  css: string;
+  setCss: React.Dispatch<React.SetStateAction<string>>;
+  previewTheme: PreviewThemeValue;
+  setPreviewTheme: React.Dispatch<React.SetStateAction<PreviewThemeValue>>;
   theme: ThemeValue;
   setTheme: React.Dispatch<React.SetStateAction<ThemeValue>>;
 }
 
 export const Context = React.createContext<CreateContext>({
-  css: 'default',
+  markdown: data.source,
+  setMarkdown: () => {},
+  css: previewThemes['underscore'].value,
   setCss: () => {},
+  previewTheme: 'underscore',
+  setPreviewTheme: () => {},
   theme: 'default',
   setTheme: () => {},
 });
 
 export const Provider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [css, setCss] = React.useState<PreviewThemeValue>('underscore');
+  const [markdown, setMarkdown] = React.useState<string>(data.source);
+  const [css, setCss] = React.useState<string>(previewThemes['underscore'].value);
+  const [previewTheme, setPreviewTheme] = React.useState<PreviewThemeValue>('underscore');
   const [theme, setTheme] = React.useState<ThemeValue>('default');
 
   return (
     <Context.Provider
       value={{
+        markdown,
+        setMarkdown,
         css,
         setCss,
+        previewTheme,
+        setPreviewTheme,
         theme,
         setTheme,
       }}
