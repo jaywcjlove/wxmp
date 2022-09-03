@@ -88,6 +88,7 @@ export function Layout() {
         <Section>
           <NavLink to="/">首页</NavLink>
           <NavLink to="/editor/theme">编辑主题</NavLink>
+          <NavLink to="/doc">文档</NavLink>
           <dark-mode permanent dark="Dark" light="Light" />
           <a href="https://github.com/jaywcjlove/wxmp" target="__blank">
             <GithubIcon width={23} height={23} />

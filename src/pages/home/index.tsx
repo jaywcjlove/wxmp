@@ -8,7 +8,7 @@ import { theme as themeCommand, previeTheme } from '../../commands/theme';
 import { cssCommand } from '../../commands/css';
 import { Context, themes } from '../../store/context';
 
-const Warpper = styled.div`
+export const Warpper = styled.div`
   height: calc(100vh - 2.9rem);
 `;
 

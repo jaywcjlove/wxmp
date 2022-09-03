@@ -66,13 +66,20 @@ Inline Code `{code: 0}`
 
 ### 支持注释
 
+```html
 <ruby>
-  汉 <rp></rp><rt>Han</rt><rp></rp>
-  字 <rp></rp><rt>zi</rt><rp></rp>
-  拼 <rp></rp><rt>pin</rt><rp></rp>
-  音 <rp></rp><rt>yin</rt><rp></rp>
-  注 <rp></rp><rt>zhu</rt><rp></rp>
-  音 <rp></rp><rt>yin</rt><rp></rp>
+  汉 <rt>Han</rt>
+</ruby>
+```
+
+汉字注音效果：
+<ruby>
+  汉 <rt>Han</rt>
+  字 <rt>zi</rt>
+  拼 <rt>pin</rt>
+  音 <rt>yin</rt>
+  注 <rt>zhu</rt>
+  音 <rt>yin</rt>
 </ruby>
 
 ### 支持自定义样式
@@ -98,6 +105,20 @@ Inline Code `{code: 0}`
 # 注释忽略
 
 <!--rehype:ignore:start-->内容在微信 Markdown 编辑器预览中不显示。在其它预览工具中展示内容。<!--rehype:ignore:end-->
+```
+
+### 支持 URL 参数加载 Markdown 内容
+
+```
+https://<URL>?md=<Markdown 资源 URL>
+```
+
+加载 Markdown 内容的示例 URL：
+
+```
+https://jaywcjlove.github.io/wxmp/#/?theme=underscore&md=https%3A%2F%2Fraw.githubusercontent.com%2Fuiwjs%2Freact-markdown-editor%2Fmaster%2FREADME.md
+
+Markdown URL 地址: https://raw.githubusercontent.com/uiwjs/react-markdown-editor/master/README.md
 ```
 
 ## 主题定制

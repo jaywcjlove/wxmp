@@ -52,12 +52,14 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const style: React.CSSProperties = { zIndex: 999 };
+
 const container = document.getElementById('root');
 const root = createRoot(container!);
 root.render(
   <HashRouter>
     <Toaster />
-    <BackToUp>Top</BackToUp>
+    <BackToUp style={style}>Top</BackToUp>
     <GlobalStyle />
     <Provider>
       <App />
