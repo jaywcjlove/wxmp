@@ -1,10 +1,8 @@
 <div align="center">
-
-<h1 align="center">微信公众号 Markdown 编辑器</h1>
-
+  <h1 align="center">微信公众号 Markdown 编辑器</h1>
 </div>
 
-![](https://user-images.githubusercontent.com/1680273/187980169-e648f2a4-41f0-496f-8450-7f5ffc255059.png)
+![微信公众号 Markdown 编辑器](https://user-images.githubusercontent.com/1680273/188257498-529e42aa-44b0-441f-bcdd-049efa174b78.png)
 
 微信公众号文章 Markdown 在线编辑器，使用 markdown 语法创建一篇简介美观大方的微信公众号图文。由于发版本麻烦，和一些功能无法扩展停滞开发了，未来不再开发 Chrome 的插件(暂存在 chrome 分支)，通过 web 版本定制更丰富的功能。
 
