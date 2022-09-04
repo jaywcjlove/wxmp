@@ -1,0 +1,35 @@
+{
+  "productName": "wxmp",
+  "appId": "com.wangchujiang.wxmp",
+  "asar": true,
+  "directories": {
+    "output": "dist"
+  },
+  "mac": {
+    "icon": "tools.icns",
+    "target": {
+      "target": "default",
+      "arch": ["arm64", "x64"]
+    },
+    "category": "public.app-category.developer-tools",
+    "type": "distribution",
+    "entitlements": "assets/entitlements.mac.plist",
+    "entitlementsInherit": "assets/entitlements.mac.plist"
+  },
+  "linux": {
+    "icon": "tools.icns",
+    "description": "微信公众号 Markdown 编辑器",
+    "category": "Development",
+    "target": ["deb", "rpm"],
+    "desktop": {
+      "Name": "Web Tools"
+    }
+  },
+  "win": {
+    "icon": "tools.ico",
+    "target": {
+      "target": "nsis",
+      "arch": ["x64", "ia32"]
+    }
+  }
+}

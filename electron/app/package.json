@@ -1,0 +1,30 @@
+{
+  "name": "wxmp",
+  "description": "微信公众号 Markdown 编辑器",
+  "homepage": "https://github.com/jaywcjlove/wxmp.git",
+  "version": "2.1.0",
+  "main": "main.js",
+  "author": "Kenny Wong <398188662@qq.com>",
+  "private": true,
+  "scripts": {
+    "deps": "electron-builder install-app-deps",
+    "start": "cross-env NODE_ENV=development ELECTRON_DISABLE_SECURITY_WARNINGS=true electron .",
+    "start:production": "cross-env NODE_ENV=production ELECTRON_DISABLE_SECURITY_WARNINGS=true electron .",
+    "dist-win32": "electron-builder --win --ia32 --config config.json",
+    "dist-win64": "electron-builder --win --x64 --config config.json",
+    "dist-mac": "electron-builder --mac --universal --config config.json",
+    "dist-linux": "electron-builder --linux --config config.json",
+    "copy": "cpy './node_modules/@wcj/wxmp-preload/lib/*.js' './node_modules/website/build/**' website",
+    "build": "npm run copy && cross-env NODE_ENV=production electron-builder build --publish=never --config config.json"
+  },
+  "dependencies": {
+    "@wcj/wxmp-main": "2.1.0"
+  },
+  "devDependencies": {
+    "@wcj/wxmp-preload": "2.1.0",
+    "cpy-cli": "4.1.0",
+    "electron": "19.0.5",
+    "electron-builder": "23.1.0",
+    "website": "2.1.0"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "@wcj/wxmp-preload",
+  "version": "2.1.0",
+  "main": "./lib/index.js",
+  "private": true,
+  "scripts": {
+    "build": "tsbb build --disable-babel --file-names src/index.ts",
+    "watch": "tsbb watch --disable-babel --file-names src/index.ts"
+  },
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "electron": "19.0.5"
+  }
+}

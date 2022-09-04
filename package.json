@@ -1,82 +1,34 @@
 {
-  "name": "website",
-  "version": "2.1.0",
   "private": true,
   "scripts": {
-    "start": "kkt start",
-    "build": "kkt build",
+    "build": "lerna exec --scope @wcj/* --ignore wxmp -- npm run build",
+    "doc": "npm run-script build --workspace website",
+    "start": "npm run-script start --workspace website",
+    "build:app": "npm run-script build --workspace wxmp",
+    "⬆️⬆️⬆️⬆️⬆️ package ⬆️⬆️⬆️⬆️⬆️": "▲▲▲▲▲ package ▲▲▲▲▲",
+    "version": "lerna version --exact --force-publish --no-push --no-git-tag-version",
     "prepare": "husky install",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
-    "pretty-quick": "pretty-quick --staged"
+    "pretty-quick": "pretty-quick --staged",
+    "hoist": "lerna bootstrap --hoist",
+    "clean": "lerna clean --yes"
   },
   "license": "MIT",
-  "dependencies": {
-    "@babel/runtime": "^7.18.9",
-    "@tanstack/react-query": "^4.2.3",
-    "@uiw/codemirror-theme-abcdef": "^4.11.6",
-    "@uiw/codemirror-theme-androidstudio": "^4.11.6",
-    "@uiw/codemirror-theme-atomone": "^4.11.6",
-    "@uiw/codemirror-theme-bbedit": "^4.11.6",
-    "@uiw/codemirror-theme-bespin": "^4.11.6",
-    "@uiw/codemirror-theme-darcula": "^4.11.6",
-    "@uiw/codemirror-theme-dracula": "^4.11.6",
-    "@uiw/codemirror-theme-duotone": "^4.11.6",
-    "@uiw/codemirror-theme-eclipse": "^4.11.6",
-    "@uiw/codemirror-theme-github": "^4.11.6",
-    "@uiw/codemirror-theme-okaidia": "^4.11.6",
-    "@uiw/codemirror-theme-sublime": "^4.11.6",
-    "@uiw/codemirror-theme-xcode": "^4.11.6",
-    "@uiw/react-back-to-top": "^1.2.0",
-    "@uiw/react-github-corners": "^1.5.15",
-    "@uiw/react-markdown-editor": "^5.6.0",
-    "@wcj/dark-mode": "^1.0.15",
-    "css-tree": "^2.2.1",
-    "react": "^18.2.0",
-    "react-code-preview-layout": "^2.0.4",
-    "react-dom": "^18.2.0",
-    "react-hot-toast": "^2.3.0",
-    "react-router-dom": "^6.3.0",
-    "rehype-attr": "^2.0.8",
-    "rehype-ignore": "^1.0.1",
-    "rehype-prism-plus": "^1.5.0",
-    "rehype-raw": "^6.1.1",
-    "rehype-stringify": "^9.0.3",
-    "remark-gfm": "^3.0.1",
-    "remark-parse": "^10.0.1",
-    "remark-rehype": "^10.1.0",
-    "styled-components": "^5.3.5",
-    "unified": "^10.1.2"
-  },
   "devDependencies": {
-    "@kkt/less-modules": "^7.2.0",
-    "@kkt/raw-modules": "^7.2.0",
-    "@kkt/scope-plugin-options": "^7.2.0",
-    "@types/css-tree": "^1.0.7",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "@types/styled-components": "^5.1.25",
+    "cross-env": "^7.0.3",
     "husky": "^8.0.1",
-    "kkt": "^7.2.0",
-    "markdown-react-code-preview-loader": "^2.1.2",
+    "lerna": "5.3.0",
     "prettier": "^2.7.1",
-    "pretty-quick": "~3.1.3"
+    "pretty-quick": "~3.1.3",
+    "tsbb": "^3.7.5"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
+  "workspaces": {
+    "packages": [
+      "electron/**",
+      "website"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "engines": {
+    "node": ">=16.0.0"
   }
 }

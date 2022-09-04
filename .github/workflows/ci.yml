@@ -68,6 +68,12 @@ jobs:
       - name: Build Awesome Mac image
         run: docker image build -t wxmp .
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: webiste
+          path: |
+            website/build/**
+
       - name: Tags & Push image (latest)
         run: |
           echo "outputs.tag - ${{ steps.changelog.outputs.version }}"
@@ -97,3 +103,34 @@ jobs:
             echo "version: v${{ steps.changelog.outputs.version }}"
             docker tag ghcr.io/jaywcjlove/wxmp:latest ghcr.io/jaywcjlove/wxmp:${{steps.changelog.outputs.version}}
             docker push ghcr.io/jaywcjlove/wxmp:${{steps.changelog.outputs.version}}
+
+  build_macos:
+    needs: [build-deploy]
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - run: npm install
+      - run: npm run hoist
+      - run: npm run build
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: webiste
+          path: website/build
+
+      - name: electron-builder install-app-deps
+        working-directory: electron/app
+        run: npm run deps
+      
+      - run: npm run build:app
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: tools-macos-zip
+          path: |
+            electron/app/dist/*.zip
