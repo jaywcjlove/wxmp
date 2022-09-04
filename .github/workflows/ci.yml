@@ -177,7 +177,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: wxmp-macos-zip
+          name: wxmp-macos
           path: |
             electron/app/dist/*.zip
 
@@ -267,13 +267,15 @@ jobs:
 
   roll_back:
     if: failure()
-    needs: [create_release]
+    needs: [build, create_release]
     runs-on: ubuntu-latest
     timeout-minutes: 4
     steps:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
+
+      - run: echo "outputs.version - ${{ needs.build.outputs.create_tag_version }}"
 
       - uses: dev-drprasad/delete-tag-and-release@v0.2.0
         if: needs.build.outputs.successful

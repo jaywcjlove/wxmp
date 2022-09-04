@@ -185,11 +185,11 @@ docker pull ghcr.io/jaywcjlove/wxmp:latest
 ```
 
 ```bash
-docker run --name wxmp --rm -d -p 96611:3000 wcjiang/wxmp:latest
+docker run --name wxmp --rm -d -p 8113:3000 wcjiang/wxmp:latest
 # Or
-docker run --name wxmp -itd -p 96611:3000 wcjiang/wxmp:latest
+docker run --name wxmp -itd -p 8113:3000 wcjiang/wxmp:latest
 # Or
-docker run --name wxmp -itd -p 96611:3000 ghcr.io/jaywcjlove/wxmp:latest
+docker run --name wxmp -itd -p 8113:3000 ghcr.io/jaywcjlove/wxmp:latest
 ```
 
 在浏览器中访问以下 URL
