@@ -107,6 +107,40 @@ jobs:
             docker tag ghcr.io/jaywcjlove/wxmp:latest ghcr.io/jaywcjlove/wxmp:${{steps.changelog.outputs.version}}
             docker push ghcr.io/jaywcjlove/wxmp:${{steps.changelog.outputs.version}}
 
+  build_windows: 
+    needs: [build-deploy]
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install
+        run: npm install --build-from-source
+
+      - run: npm run hoist
+      - run: npm run build
+      # - run: npm run electron
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: webiste
+          path: website/build
+
+      - name: electron-builder install-app-deps
+        working-directory: electron/app
+        run: npm run deps
+
+      - run: npm run build:app
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: tools-windows
+          path: |
+            electron\app\dist\*.exe
+
   build_macos:
     needs: [build-deploy]
     runs-on: macos-latest
@@ -137,3 +171,35 @@ jobs:
           name: tools-macos-zip
           path: |
             electron/app/dist/*.zip
+
+  build_linux:
+    needs: [build-deploy]
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install
+      - run: npm run hoist
+      - run: npm run build
+      # - run: npm run electron
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: webiste
+          path: website/build
+
+      - name: electron-builder install-app-deps
+        working-directory: electron/app
+        run: npm run deps
+
+      - run: npm run build:app
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: tools-linux
+          path: |
+            electron/app/dist/*.deb
+            electron/app/dist/*.rpm
