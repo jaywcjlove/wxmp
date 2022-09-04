@@ -66,6 +66,7 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build wxmp image
+        working-directory: website
         run: docker image build -t wxmp .
 
       - uses: actions/upload-artifact@v3
@@ -92,6 +93,7 @@ jobs:
         run: echo ${{ github.token }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build docker image
+        working-directory: website
         run: docker build -t ghcr.io/jaywcjlove/wxmp:latest .
 
       - name: Publish to GitHub registry
