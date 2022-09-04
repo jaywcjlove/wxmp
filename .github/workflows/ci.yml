@@ -15,6 +15,7 @@ jobs:
 
       - run: npm install
       - run: npm run build
+      - run: npm run doc
 
       - name: Generate Contributors Images
         uses: jaywcjlove/github-action-contributors@main
