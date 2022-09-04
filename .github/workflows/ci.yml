@@ -27,7 +27,7 @@ jobs:
         id: create_tag
         uses: jaywcjlove/create-tag-action@main
         with:
-          package-path: ./package.json
+          package-path: ./website/package.json
 
       - name: get tag version
         id: tag_version
