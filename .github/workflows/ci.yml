@@ -5,7 +5,7 @@ on:
       - master
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
@@ -16,6 +16,11 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm run doc
+      - uses: actions/upload-artifact@v3
+        with:
+          name: webiste
+          path: |
+            website/build/**
 
       - name: Generate Contributors Images
         uses: jaywcjlove/github-action-contributors@main
@@ -49,18 +54,28 @@ jobs:
           filter-author: (renovate-bot|Renovate Bot)
           filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
 
-      - name: Create Release
-        uses: ncipollo/release-action@v1
-        if: steps.create_tag.outputs.successful
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: ${{ steps.create_tag.outputs.version }}
-          tag: ${{ steps.create_tag.outputs.version }}
-          body: |
-            Documentation ${{ steps.changelog.outputs.tag }}: https://raw.githack.com/jaywcjlove/wxmp/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
-            Comparing Changes: ${{ steps.changelog.outputs.compareurl }}  
+    outputs:
+      version: ${{ steps.changelog.outputs.version }}
+      create_tag_version: ${{ steps.create_tag.outputs.version }}
+      create_tag_versionNumber: ${{ steps.create_tag.outputs.versionNumber }}
+      tag: ${{ steps.changelog.outputs.tag }}
+      successful: ${{steps.create_tag.outputs.successful }}
+      gh-pages-short-hash: ${{ steps.changelog.outputs.gh-pages-short-hash }}
 
-            ${{ steps.changelog.outputs.changelog }}
+  docker: 
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: webiste
+          path: website/build
+
+      - run: echo "outputs.version - ${{ needs.build.outputs.version }}"
+      - run: echo "outputs.create_tag_version - ${{ needs.build.outputs.create_tag_version }}"
+      - run: echo "outputs.create_tag_versionNumber - ${{ needs.build.outputs.create_tag_versionNumber }}"
+      - run: echo "outputs.tag - ${{ needs.build.outputs.tag }}"
 
       # Create Docker Image
       - name: Docker login
@@ -70,24 +85,18 @@ jobs:
         working-directory: website
         run: docker image build -t wxmp .
 
-      - uses: actions/upload-artifact@v3
-        with:
-          name: webiste
-          path: |
-            website/build/**
-
       - name: Tags & Push image (latest)
         run: |
-          echo "outputs.tag - ${{ steps.changelog.outputs.version }}"
+          echo "outputs.tag - ${{ needs.build.outputs.version }}"
           docker tag wxmp ${{ secrets.DOCKER_USER }}/wxmp:latest
           docker push ${{ secrets.DOCKER_USER }}/wxmp:latest
 
       - name: Tags & Push image
-        if: steps.create_tag.outputs.successful
+        if: needs.build.outputs.successful
         run: |
-          echo "outputs.tag - ${{ steps.changelog.outputs.version }}"
-          docker tag wxmp ${{ secrets.DOCKER_USER }}/wxmp:${{steps.changelog.outputs.version}}
-          docker push ${{ secrets.DOCKER_USER }}/wxmp:${{steps.changelog.outputs.version}}
+          echo "outputs.tag - ${{ needs.build.outputs.version }}"
+          docker tag wxmp ${{ secrets.DOCKER_USER }}/wxmp:${{needs.build.outputs.version}}
+          docker push ${{ secrets.DOCKER_USER }}/wxmp:${{needs.build.outputs.version}}
 
       # Create Docker Image in GitHub
       - name: Login to GitHub registry
@@ -101,14 +110,14 @@ jobs:
         run: docker push ghcr.io/jaywcjlove/wxmp:latest
 
       - name: Tag docker image (beta) and publish to GitHub registry
-        if: steps.create_tag.outputs.successful
+        if: needs.build.outputs.successful
         run: |
-            echo "version: v${{ steps.changelog.outputs.version }}"
-            docker tag ghcr.io/jaywcjlove/wxmp:latest ghcr.io/jaywcjlove/wxmp:${{steps.changelog.outputs.version}}
-            docker push ghcr.io/jaywcjlove/wxmp:${{steps.changelog.outputs.version}}
+            echo "version: v${{ needs.build.outputs.version }}"
+            docker tag ghcr.io/jaywcjlove/wxmp:latest ghcr.io/jaywcjlove/wxmp:${{needs.build.outputs.version}}
+            docker push ghcr.io/jaywcjlove/wxmp:${{needs.build.outputs.version}}
 
   build_windows: 
-    needs: [build-deploy]
+    needs: [build]
     runs-on: windows-latest
     timeout-minutes: 30
     steps:
@@ -137,12 +146,12 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: tools-windows
+          name: wxmp-windows
           path: |
             electron\app\dist\*.exe
 
   build_macos:
-    needs: [build-deploy]
+    needs: [build]
     runs-on: macos-latest
     timeout-minutes: 30
     steps:
@@ -168,12 +177,12 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: tools-macos-zip
+          name: wxmp-macos-zip
           path: |
             electron/app/dist/*.zip
 
   build_linux:
-    needs: [build-deploy]
+    needs: [build]
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -199,7 +208,78 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: tools-linux
+          name: wxmp-linux
           path: |
             electron/app/dist/*.deb
             electron/app/dist/*.rpm
+
+
+  create_release:
+    needs: [build, build_windows, build_macos, build_linux]
+    if: needs.build.outputs.successful
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: wxmp-linux
+          path: dist/linux
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: wxmp-macos
+          path: dist/macos
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: wxmp-windows
+          path: dist/windows
+
+      - name: Display structure of downloaded files
+        working-directory: dist
+        run: ls -R
+
+      - name: Generate Changelog
+        id: changelog
+        uses: jaywcjlove/changelog-generator@v1.5.7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          filter-author: (jaywcjlove|小弟调调™|dependabot\[bot\]|Renovate Bot)
+          filter: (^[\s]+?[R|r]elease)|(^[R|r]elease)
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        if: needs.build.outputs.successful
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ needs.build.outputs.version }}
+          tag: ${{ needs.build.outputs.version }}
+          body: |
+            Documentation ${{ steps.changelog.outputs.tag }}: https://raw.githack.com/jaywcjlove/wxmp/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
+            Comparing Changes: ${{ steps.changelog.outputs.compareurl }}  
+
+            ${{ steps.changelog.outputs.changelog }}
+
+  roll_back:
+    if: failure()
+    needs: [create_release]
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - uses: dev-drprasad/delete-tag-and-release@v0.2.0
+        if: needs.build.outputs.successful
+        with:
+          delete_release: true
+          repo: jaywcjlove/wxmp
+          tag_name: '${{ needs.build.outputs.create_tag_version }}'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
