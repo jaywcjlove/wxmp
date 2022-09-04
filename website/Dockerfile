@@ -4,4 +4,4 @@ FROM lipanski/docker-static-website:latest
 
 # Copy the static website
 # Use the .dockerignore file to control what ends up inside the image!
-COPY ./website/build .
+COPY ./build .
