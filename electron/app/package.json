@@ -24,7 +24,7 @@
     "@wcj/wxmp-preload": "2.2.0",
     "cpy-cli": "4.2.0",
     "electron": "19.0.5",
-    "electron-builder": "23.1.0",
+    "electron-builder": "23.3.3",
     "website": "2.2.0"
   }
 }
