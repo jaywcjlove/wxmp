@@ -65,7 +65,7 @@ jobs:
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Awesome Mac image
+      - name: Build wxmp image
         run: docker image build -t wxmp .
 
       - uses: actions/upload-artifact@v3
