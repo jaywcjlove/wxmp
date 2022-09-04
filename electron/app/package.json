@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@wcj/wxmp-preload": "2.1.0",
-    "cpy-cli": "4.1.0",
+    "cpy-cli": "4.2.0",
     "electron": "19.0.5",
     "electron-builder": "23.1.0",
     "website": "2.1.0"
