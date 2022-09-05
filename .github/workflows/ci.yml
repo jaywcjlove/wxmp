@@ -26,7 +26,7 @@ jobs:
         uses: jaywcjlove/github-action-contributors@main
         with:
           filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
-          output: build/CONTRIBUTORS.svg
+          output: website/build/CONTRIBUTORS.svg
           avatarSize: 42
 
       - name: Create Tag
@@ -257,8 +257,8 @@ jobs:
         if: needs.build.outputs.successful
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: ${{ needs.build.outputs.version }}
-          tag: ${{ needs.build.outputs.version }}
+          name: ${{ steps.changelog.outputs.tag }}
+          tag: ${{ steps.changelog.outputs.tag }}
           body: |
             Documentation ${{ steps.changelog.outputs.tag }}: https://raw.githack.com/jaywcjlove/wxmp/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
             Comparing Changes: ${{ steps.changelog.outputs.compareurl }}  
