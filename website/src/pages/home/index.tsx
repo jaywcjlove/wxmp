@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { EditorView } from '@codemirror/view';
 import { Preview } from './Preview';
 import { copy } from '../../commands/copy';
+import { colorCommand } from '../../commands/color';
 import { theme as themeCommand, previeTheme } from '../../commands/theme';
 import { cssCommand } from '../../commands/css';
 import { Context, themes } from '../../store/context';
@@ -18,7 +19,7 @@ export const HomePage = () => {
       toolbars={commands}
       theme={themeValue}
       readOnly={isLoading}
-      toolbarsMode={[cssCommand, previeTheme, copy, 'fullscreen', 'preview']}
+      toolbarsMode={[cssCommand, previeTheme, copy, colorCommand, 'fullscreen', 'preview']}
       extensions={[EditorView.lineWrapping]}
       renderPreview={Preview}
       previewWidth="420px"

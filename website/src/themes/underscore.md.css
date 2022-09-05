@@ -1,7 +1,7 @@
 a {
-  color: #576b95;
+  color: #ffb11b;
   text-decoration: none;
-  font-size: 0.85em;
+  font-size: 14px;
 }
 
 h1 {
@@ -11,7 +11,7 @@ h1 {
   line-height: 1.15;
   font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB',
     'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
-  font-size: 1.3em;
+  font-size: 16px;
   font-weight: bold;
   margin: 2em auto 1em;
   padding: 0 1em 0.3em 1em;
@@ -24,16 +24,11 @@ h2 {
   line-height: 1.35;
   font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB',
     'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
-  font-size: 1.2em;
+  font-size: 16px;
   font-weight: bold;
   padding: 0 0.3em;
   margin: 2em 0 1em 0;
   box-shadow: inset 0 -0.7rem 0 0 #ffb11b;
-}
-
-p {
-  font-size: 0.85em;
-  line-height: 1.5em;
 }
 
 h3 {
@@ -60,8 +55,15 @@ ol {
 li {
   margin: 0;
   line-height: 1.5em;
-  color: rgb(30 41 59);
-  font-size: 0.85em;
+  font-size: 14px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.5em;
+  padding: 0.5em 0 !important;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
 }
 
 blockquote {
@@ -69,13 +71,13 @@ blockquote {
   line-height: 1.5em;
   font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB',
     'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
-  font-size: 0.85em;
+  font-size: 14px;
   font-style: normal;
   border-left: none;
-  padding: 0.1rem 1rem;
+  padding: 0.5em 1em;
   border-radius: 4px;
   background: rgba(27, 31, 35, 0.05);
-  margin: 1rem 0;
+  margin: 1em 0;
 }
 
 pre {
@@ -109,7 +111,7 @@ table {
   width: 100% !important;
   border-collapse: collapse;
   line-height: 1.35;
-  font-size: 0.85em;
+  font-size: 14px;
 }
 
 td {
@@ -127,7 +129,7 @@ th {
   text-align: left;
   line-height: 1.75;
   font-family: Menlo, 'Operator Mono', Consolas, Monaco, monospace;
-  font-size: 0.85em;
+  font-size: 14px;
   margin: 0px;
   white-space: nowrap;
 }
@@ -146,7 +148,7 @@ th {
   padding: 0.1em 0.3em;
   border-radius: 0.3em;
   font-weight: bold;
-  font-size: 0.85em;
+  font-size: 14px;
   top: -0.1em;
   position: relative;
 }
@@ -155,14 +157,14 @@ th {
   display: table;
   font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB',
     'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
-  font-size: 1em;
+  font-size: 14px;
   font-weight: bold;
   margin: 3em 0 0.6em 0;
   padding-left: 0.2em;
 }
 
 .footnotes-list {
-  font-size: 0.75em;
+  font-size: 10px;
   font-style: italic;
   line-height: 1.2;
   margin: 0.4rem 0;

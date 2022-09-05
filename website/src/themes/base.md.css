@@ -5,14 +5,14 @@ a {
 
 h1 {
   color: inherit;
-  font-size: 1.5rem;
+  font-size: 16px;
   font-weight: bold;
 }
 
 h2 {
   color: inherit;
   margin: 2.5rem 0 1rem 0;
-  font-size: 1.3em;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -20,19 +20,19 @@ h3 {
   color: inherit;
   margin: 1em 0 1em 0;
   font-weight: bold;
-  font-size: 1em;
+  font-size: 14px;
 }
 
 h4 {
   color: inherit;
   margin: 0.6em 0 0.6em 0;
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 12px;
 }
 
 p {
   color: initial;
-  font-size: 0.85em;
+  font-size: 14px;
   line-height: 1.5em;
 }
 
@@ -46,7 +46,7 @@ ol {
 
 li {
   margin: 0;
-  font-size: 0.85em;
+  font-size: 14px;
   line-height: 1.5em;
 }
 
@@ -63,7 +63,7 @@ pre {
   padding: 1em;
   color: rgb(51, 51, 51);
   background: rgb(248, 248, 248);
-  font-size: 0.85em;
+  font-size: 14px;
   font-weight: 400;
   letter-spacing: normal;
   word-spacing: 0px;
@@ -76,7 +76,7 @@ table {
   width: 100% !important;
   border-collapse: collapse;
   line-height: 1.35;
-  font-size: 0.85em;
+  font-size: 14px;
 }
 
 td {
@@ -93,7 +93,7 @@ th {
 .code-highlight {
   text-align: left;
   font-family: Menlo, 'Operator Mono', Consolas, Monaco, monospace;
-  font-size: 0.85em;
+  font-size: 14px;
   margin: 0px;
   white-space: nowrap;
 }
@@ -120,14 +120,14 @@ th {
   display: table;
   font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB',
     'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
-  font-size: 1em;
+  font-size: 14px;
   font-weight: bold;
   margin: 3rem 0 0.6rem 0;
   padding-left: 0.2rem;
 }
 
 .footnotes-list {
-  font-size: 0.75em;
+  font-size: 10px;
   font-style: italic;
   line-height: 1.2;
   margin: 0.4rem 0;

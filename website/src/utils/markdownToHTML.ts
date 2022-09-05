@@ -13,9 +13,12 @@ import rehypeRewrite from 'rehype-rewrite';
 import stringify from 'rehype-stringify';
 import { cssdata, spaceEscape, footnotes, footnotesLabel, imagesStyle } from './css';
 
-export type MarkdownToHTMLOptions = {};
+export type MarkdownToHTMLOptions = {
+  preColor?: string;
+  previewTheme?: string;
+};
 
-export function markdownToHTML(md: string, css: string, options: MarkdownToHTMLOptions = {}) {
+export function markdownToHTML(md: string, css: string, opts: MarkdownToHTMLOptions = {}) {
   const ast = csstree.parse(css, {
     parseAtrulePrelude: false,
     parseRulePrelude: false,
@@ -24,7 +27,7 @@ export function markdownToHTML(md: string, css: string, options: MarkdownToHTMLO
     positions: false,
   });
   // @ts-ignore
-  const data = cssdata(ast.children.head);
+  const data = cssdata(ast.children.head, {}, { color: opts.preColor, theme: opts.previewTheme });
   const processor = unified()
     .use(remarkParse)
     .use(remarkGfm)
@@ -34,7 +37,7 @@ export function markdownToHTML(md: string, css: string, options: MarkdownToHTMLO
     .use(rehypeIgnore, {})
     .use(rehypeAttrs, { properties: 'attr' })
     .use(rehypeRewrite, {
-      rewrite: (node, index, parent) => {
+      rewrite: (node, _index, parent) => {
         // @ts-ignore
         if (
           node?.type === 'element' &&

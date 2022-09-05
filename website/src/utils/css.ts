@@ -1,20 +1,55 @@
 import { RootContent, Element, Text, Root } from 'hast';
+import { PreviewThemeValue, replaceData, ReplaceData } from '../store/context';
 
-export const getBlock = (data: any, str: string = '') => {
+/**
+ * {
+ *    "replace": [
+ *       { select: 'a', name: 'color', value: 'red' },
+ *       { select: 'h1', name: 'box-shadow', value: 'red' },
+ *       { select: 'h2', name: 'box-shadow', value: 'red' },
+ *       { select: 'h3', name: 'border-left', value: 'red' },
+ *       { select: 'h3', name: 'color', value: 'red' },
+ *    ]
+ * }
+ */
+type BlockOption = {
+  replace?: Array<ReplaceData>;
+};
+
+export const getBlock = (data: any, str: string = '', opts: BlockOption = {}) => {
+  const { replace } = opts;
   if (data && data.data && data.data.type === 'Declaration') {
-    str = `${data.data.property}: ${data.data.value.value}${data.data.important ? ' !important' : ''};`;
+    const value = replace?.find((m) => m.name === data.data.property)?.value || data.data.value.value;
+    // console.log(value)
+    str = `${data.data.property}: ${value}${data.data.important ? ' !important' : ''};`;
     if (data.next) {
-      str += getBlock(data.next);
+      str += getBlock(data.next, '', opts);
     }
   }
   return str;
 };
 
-export const cssdata = (list: any, result: Record<string, string> = {}) => {
+type Cssdata = {
+  theme?: PreviewThemeValue;
+  color?: string;
+};
+
+export const cssdata = (list: any, result: Record<string, string> = {}, opts: Cssdata = {}) => {
   if (list.data && list.data.type === 'Rule') {
-    result[list.data.prelude.value] = getBlock(list.data.block.children.head);
+    const selector = list.data.prelude.value;
+    const options: BlockOption = {};
+    // console.log('opts:', opts)
+    if (opts.color && opts.theme && replaceData[opts.theme]) {
+      options.replace = replaceData[opts.theme]
+        .filter((m) => m.select === selector)
+        .map((m) => ({
+          ...m,
+          value: m.value.replace('{{color}}', opts.color!),
+        }));
+    }
+    result[selector] = getBlock(list.data.block.children.head, '', options);
     if (list.next) {
-      result = cssdata(list.next, { ...result });
+      result = cssdata(list.next, { ...result }, opts);
     }
   }
   return result;
@@ -29,7 +64,6 @@ export const spaceEscape = (node: RootContent) => {
       }
       node.properties.className = className.filter((str: string) => !/(token|control-flow)/.test(str));
     }
-
     node.children.map((elm) => {
       if (elm.type === 'element' && elm.children) {
         spaceEscape(elm);

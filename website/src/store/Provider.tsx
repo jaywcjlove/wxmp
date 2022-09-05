@@ -12,6 +12,9 @@ export const Provider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [css, setCss] = React.useState<string>(previewThemes[initPreviewTheme].value);
   const [previewTheme, setPreviewTheme] = React.useState<PreviewThemeValue>(initPreviewTheme);
   const [theme, setTheme] = React.useState<ThemeValue>('default');
+  const [preColor, setPreColor] = React.useState<string>(
+    previewThemes[initPreviewTheme] ? previewThemes[initPreviewTheme].color : '',
+  );
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
   const { data: mddata, isLoading: loading } = useMdSource(mdurl);
   useEffect(() => {
@@ -26,9 +29,12 @@ export const Provider: React.FC<React.PropsWithChildren> = ({ children }) => {
     }
   }, [mddata, mdurl]);
   useEffect(() => setIsLoading(loading), [loading]);
+  useEffect(() => setPreColor(previewThemes[initPreviewTheme].color), [initPreviewTheme]);
   return (
     <Context.Provider
       value={{
+        preColor,
+        setPreColor,
         isLoading,
         setIsLoading,
         markdown,

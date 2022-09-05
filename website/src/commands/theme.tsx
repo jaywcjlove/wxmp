@@ -49,7 +49,6 @@ const ThemePreviewView: React.FC<{}> = () => {
   const { setCss, previewTheme, setPreviewTheme } = useContext(Context);
   const handleChange = (ev: React.ChangeEvent<HTMLSelectElement>) => {
     const value = ev.target.value as PreviewThemeValue;
-    console.log('vvvv');
     setPreviewTheme(value);
     setCss(previewThemes[value].value);
   };

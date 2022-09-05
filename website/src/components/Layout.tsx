@@ -72,14 +72,16 @@ const Section = styled.section`
     text-decoration: none;
     color: var(--color-theme-text);
     padding: 0.1rem 0.3rem;
-    box-shadow: inset 0 0 0 var(--color-accent-fg);
     transition: all 0.3s;
     font-size: 0.9rem;
+    border-radius: 0.2rem;
     &.active {
+      background-color: var(--color-accent-fg);
       box-shadow: inset 0 -0.3rem 0 var(--color-accent-fg);
+      color: #fff;
     }
     &:hover:not(.active):not(:last-child) {
-      box-shadow: inset 0 -1.5rem 0 var(--color-accent-fg);
+      background-color: var(--color-accent-fg);
       color: #fff;
       border-radius: 0.2rem;
     }

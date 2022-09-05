@@ -4,11 +4,10 @@ import toast from 'react-hot-toast';
 import styled from 'styled-components';
 
 const Button = styled.button`
-  white-space: nowrap;
+  /* white-space: nowrap;
   width: initial !important;
   display: flex;
-  align-items: center;
-  padding: 0 0.4rem !important;
+  align-items: center; */
 `;
 
 const CopyView: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & ToolBarProps }> = (props) => {
@@ -27,7 +26,7 @@ const CopyView: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & Too
   };
   return (
     <Button type="button" onClick={handleClick}>
-      {props.command.icon} 复制
+      {props.command.icon}
     </Button>
   );
 };

@@ -14,7 +14,7 @@ export const Warpper = styled.div`
 `;
 
 export const Preview = (props: MarkdownPreviewProps) => {
-  const { css } = useContext(Context);
-  const html = markdownToHTML(props.source || '', css);
+  const { css, preColor, previewTheme } = useContext(Context);
+  const html = markdownToHTML(props.source || '', css, { preColor, previewTheme });
   return <Warpper contentEditable spellCheck={false} dangerouslySetInnerHTML={{ __html: html }} />;
 };
