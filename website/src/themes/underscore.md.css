@@ -33,6 +33,7 @@ h2 {
 
 p {
   font-size: 0.85em;
+  line-height: 1.5em;
 }
 
 h3 {
@@ -65,7 +66,7 @@ li {
 
 blockquote {
   text-align: left;
-  line-height: 1.75;
+  line-height: 1.5em;
   font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB',
     'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
   font-size: 0.85em;
@@ -140,12 +141,12 @@ th {
   text-align: left;
   line-height: 1;
   white-space: initial;
-  color: #ffb11b;
+  color: #333;
   background: rgba(27, 31, 35, 0.05);
   padding: 0.1em 0.3em;
   border-radius: 0.3em;
   font-weight: bold;
-  font-size: 1em;
+  font-size: 0.85em;
   top: -0.1em;
   position: relative;
 }

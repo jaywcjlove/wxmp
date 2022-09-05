@@ -5,11 +5,12 @@ import { Context } from '../../store/context';
 
 import { markdownToHTML } from '../../utils/markdownToHTML';
 
-const Warpper = styled.div`
+export const Warpper = styled.div`
   width: 375px;
   padding: 20px;
   box-shadow: 0 0 60px rgb(0 0 0 / 10%);
   min-height: 100%;
+  font-size: 17px;
 `;
 
 export const Preview = (props: MarkdownPreviewProps) => {

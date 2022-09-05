@@ -14,15 +14,16 @@ export class App {
   async createWindow(options: Options = {}, loadURL?: string) {
     await app.whenReady();
     const opts: Options = {
-      titleBarStyle: 'hidden', // 无标题栏
-      frame: false, // 创建无边窗口
-      width: 800,
+      // titleBarStyle: 'hiddenInset', // 无标题栏
+      // frame: false, // 创建无边窗口
+      width: 850,
       height: 600,
       minWidth: 850,
+      minHeight: 600,
       center: true,
-      maximizable: true,
-      minimizable: true,
-      resizable: true,
+      // maximizable: true,
+      // minimizable: true,
+      // resizable: true,
       webPreferences: {
         // 多线程
         nodeIntegrationInWorker: true,

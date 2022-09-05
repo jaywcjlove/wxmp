@@ -1,18 +1,4 @@
-const styleStr = `.siderbar {
-  -webkit-app-region: drag;
-}
-.siderbar header h1 a, github-corners {
-  display: none;
-}
-article.content:before {
-  -webkit-app-region: drag;
-  position: absolute;
-  content: ' ';
-  display: block;
-  height: 41px;
-  width: 100%;
-  z-index: -1;
-}`;
+const styleStr = `.header .logo {}`;
 
 document.addEventListener('DOMContentLoaded', () => {
   const head = document.querySelector('head');

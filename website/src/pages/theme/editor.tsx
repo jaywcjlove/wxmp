@@ -8,7 +8,6 @@ import { previousCommand } from '../../commands/css';
 import { themeTitle } from '../../commands/title';
 import { theme as themeCommand, previeTheme } from '../../commands/theme';
 import { Context, themes } from '../../store/context';
-import { Warpper } from '../home';
 
 export const EditorPage = () => {
   const commands = [themeTitle, themeCommand, previousCommand];
@@ -17,20 +16,18 @@ export const EditorPage = () => {
   const value = themes[theme].value;
   const handleChange = (value: string) => setCss(value);
   return (
-    <Warpper>
-      <MarkdownEditor
-        value={css}
-        theme={value}
-        readOnly={isLoading}
-        toolbars={commands}
-        toolbarsMode={toolbarsMode}
-        reExtensions={[EditorView.lineWrapping, cssLang()]}
-        renderPreview={Preview}
-        previewWidth="420px"
-        onChange={handleChange}
-        visible={true}
-        height="calc(100vh - 4.92rem)"
-      />
-    </Warpper>
+    <MarkdownEditor
+      value={css}
+      theme={value}
+      readOnly={isLoading}
+      toolbars={commands}
+      toolbarsMode={toolbarsMode}
+      reExtensions={[EditorView.lineWrapping, cssLang()]}
+      renderPreview={Preview}
+      previewWidth="420px"
+      onChange={handleChange}
+      visible={true}
+      height="calc(100vh - 4.6rem)"
+    />
   );
 };

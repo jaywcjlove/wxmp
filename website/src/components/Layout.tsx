@@ -8,14 +8,22 @@ import { ReactComponent as Loading } from '../assets/tail-spin.svg';
 import { Context } from '../store/context';
 
 const Warpper = styled.div``;
+const HeaderPlace = styled.div`
+  position: relative;
+  height: 2.8rem;
+`;
 
 const Header = styled.header`
   -webkit-app-region: drag;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background: var(--color-canvas-default);
   border-bottom: 1px solid var(--color-border-muted);
-  padding: 0.5rem 0.6rem 0.5rem 1rem;
+  padding: 0.5rem 0.6rem 0.5rem 0.8rem;
+  position: fixed;
+  width: 100%;
+  z-index: 9;
 `;
 
 const Article = styled.article`
@@ -82,25 +90,27 @@ export function Layout() {
   const { isLoading } = useContext(Context);
   return (
     <Warpper className="wmde-markdown-color">
-      <Header>
-        <Article>
-          <Logo width={28} height={28} />
-          <Title>
-            微信公众号排版编辑器
-            <sup> v{VERSION} </sup>
-          </Title>
-          {isLoading && <Loading />}
-        </Article>
-        <Section>
-          <NavLink to="/">首页</NavLink>
-          <NavLink to="/editor/theme">编辑主题</NavLink>
-          <NavLink to="/doc">文档</NavLink>
-          <dark-mode permanent dark="Dark" light="Light" />
-          <a href="https://github.com/jaywcjlove/wxmp" target="__blank">
-            <GithubIcon width={23} height={23} />
-          </a>
-        </Section>
-      </Header>
+      <HeaderPlace>
+        <Header className="header">
+          <Article className="logo">
+            <Logo width={28} height={28} />
+            <Title>
+              微信公众号排版编辑器
+              <sup> v{VERSION} </sup>
+            </Title>
+            {isLoading && <Loading />}
+          </Article>
+          <Section>
+            <NavLink to="/">首页</NavLink>
+            <NavLink to="/editor/theme">编辑主题</NavLink>
+            <NavLink to="/doc">文档</NavLink>
+            <dark-mode permanent dark="Dark" light="Light" />
+            <a href="https://github.com/jaywcjlove/wxmp" target="__blank">
+              <GithubIcon width={23} height={23} />
+            </a>
+          </Section>
+        </Header>
+      </HeaderPlace>
       <Outlet />
     </Warpper>
   );

@@ -2,9 +2,11 @@
   <h1 align="center">微信公众号 Markdown 编辑器</h1>
 </div>
 
-![微信公众号 Markdown 编辑器](https://user-images.githubusercontent.com/1680273/188264183-a6b8cb6a-92e1-4a73-afc5-4f0234b26ed3.png)
+[![微信公众号 Markdown 编辑器](https://user-images.githubusercontent.com/1680273/188264183-a6b8cb6a-92e1-4a73-afc5-4f0234b26ed3.png)](https://jaywcjlove.github.io/wxmp)
 
 微信公众号文章 Markdown 在线编辑器，使用 markdown 语法创建一篇简介美观大方的微信公众号图文。由于发版本麻烦，和一些功能无法扩展停滞开发了，未来不再开发 Chrome 的插件(暂存在 chrome 分支)，通过 web 版本定制更丰富的功能。
+
+[![Markdown 编辑器桌面应用](https://user-images.githubusercontent.com/1680273/188407235-ead43d61-2ef8-416a-926f-396d8b824b33.png)](https://jaywcjlove.github.io/wxmp)
 
 ## 功能特性
 
@@ -19,7 +21,7 @@
 - [ ] 支持色盘取色，快速替换文章整体色调
 - [x] 支持 URL 参数加载 Markdown 内容。
 - [x] 支持 URL 参数选择预览主题。
-- [x] 使用 electron 生成桌面应用。
+- [x] CI 自动生成 Electron 桌面应用。
 
 ### 支持代码块样式
 
@@ -126,7 +128,7 @@ Markdown URL 地址: https://raw.githubusercontent.com/jaywcjlove/c-tutorial/mas
 
 ## 主题定制
 
-在目录 `src/themes` 中存放默认主题，在 `src/store/context.tsx` 中配置主题，主题使用 css 定义样式，不支持复杂的选择器。提供在线主题编辑器，欢迎修改并 PR 进仓库供大家使用。
+在目录 `website/src/themes` 中存放默认主题，在 `website/src/store/context.tsx` 中配置主题，主题使用 `css` 定义样式，不支持复杂的选择器。提供在线主题编辑器，欢迎修改并 `PR` 进仓库供大家使用。
 
 ```css
 /* 1~6 标题样式定义 */
