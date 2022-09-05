@@ -26,6 +26,7 @@ export const EditorPage = () => {
         toolbarsMode={toolbarsMode}
         reExtensions={[EditorView.lineWrapping, cssLang()]}
         renderPreview={Preview}
+        previewWidth="420px"
         onChange={handleChange}
         visible={true}
         height="calc(100vh - 4.92rem)"

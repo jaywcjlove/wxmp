@@ -27,6 +27,7 @@ export const HomePage = () => {
         toolbarsMode={[cssCommand, previeTheme, copy, 'fullscreen', 'preview']}
         extensions={[EditorView.lineWrapping]}
         renderPreview={Preview}
+        previewWidth="420px"
         onChange={handleChange}
         visible={true}
         height="calc(100vh - 4.70rem)"
