@@ -6,7 +6,7 @@
 
 微信公众号文章 Markdown 在线编辑器，使用 markdown 语法创建一篇简介美观大方的微信公众号图文。由于发版本麻烦，和一些功能无法扩展停滞开发了，未来不再开发 Chrome 的插件(暂存在 chrome 分支)，通过 web 版本定制更丰富的功能。
 
-[[![Markdown 编辑器桌面应用](https://user-images.githubusercontent.com/1680273/188407235-ead43d61-2ef8-416a-926f-396d8b824b33.png)](https://jaywcjlove.github.io/wxmp)](https://github.com/jaywcjlove/wxmp/releases)
+[![Markdown 编辑器桌面应用](https://user-images.githubusercontent.com/1680273/188407235-ead43d61-2ef8-416a-926f-396d8b824b33.png)](https://jaywcjlove.github.io/wxmp)](https://github.com/jaywcjlove/wxmp/releases)
 
 ## 功能特性
 
