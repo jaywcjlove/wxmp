@@ -259,11 +259,28 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ steps.changelog.outputs.tag }}
           tag: ${{ steps.changelog.outputs.tag }}
+          artifacts: "dist/linux/*.rpm,dist/linux/*.deb,dist/macos/*.zip,dist/macos/*.dmg,dist/windows/*.exe"
           body: |
             Documentation ${{ steps.changelog.outputs.tag }}: https://raw.githack.com/jaywcjlove/wxmp/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
             Comparing Changes: ${{ steps.changelog.outputs.compareurl }}  
 
             ${{ steps.changelog.outputs.changelog }}
+
+            ```bash
+            docker pull wcjiang/wxmp:${{needs.build.outputs.create_tag_versionNumber}}
+            ```
+
+            ```bash
+            docker run --name wxmp --rm -d -p 9666:3000 wcjiang/wxmp:${{ needs.build.outputs.create_tag_versionNumber }}
+            # Or
+            docker run --name wxmp -itd -p 9666:3000 wcjiang/wxmp:${{ needs.build.outputs.create_tag_versionNumber }}
+            ```
+
+            Visit the following URL in your browser
+
+            ```bash
+            http://localhost:9666/
+            ```
 
   roll_back:
     if: failure()
