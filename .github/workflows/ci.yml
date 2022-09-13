@@ -143,6 +143,8 @@ jobs:
         run: npm run deps
 
       - run: npm run build:app
+      - working-directory: electron/app/dist
+        run: ls -R
 
       - uses: actions/upload-artifact@v3
         with:
@@ -174,6 +176,8 @@ jobs:
         run: npm run deps
       
       - run: npm run build:app
+      - working-directory: electron/app/dist
+        run: ls -R
 
       - uses: actions/upload-artifact@v3
         with:
@@ -205,6 +209,8 @@ jobs:
         run: npm run deps
 
       - run: npm run build:app
+      - working-directory: electron/app/dist
+        run: ls -R
 
       - uses: actions/upload-artifact@v3
         with:
