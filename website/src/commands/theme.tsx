@@ -12,7 +12,7 @@ const Select = styled.select`
   padding: 0 0.2rem 0 0.2rem;
   margin: 0;
   font-family: inherit;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   outline: none;
   height: 1.15rem;
   cursor: inherit;

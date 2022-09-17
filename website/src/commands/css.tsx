@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Link = styled(NavLink)`
   font-size: 0.8rem;
-  line-height: 0.8rem;
+  line-height: 0.7rem;
   text-decoration: none;
   padding: 0.18rem 0.3rem;
   &:hover {
