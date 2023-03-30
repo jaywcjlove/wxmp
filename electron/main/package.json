@@ -4,8 +4,8 @@
   "main": "./lib/index.js",
   "private": true,
   "scripts": {
-    "build": "tsbb build --disable-babel --file-names src/index.ts",
-    "watch": "tsbb watch --disable-babel --file-names src/index.ts"
+    "build": "tsbb build",
+    "watch": "tsbb watch"
   },
   "files": [
     "lib"
