@@ -32,7 +32,9 @@ export function markdownToHTML(md: string, css: string, opts: MarkdownToHTMLOpti
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypePrism)
+    .use(rehypePrism, {
+      ignoreMissing: true,
+    })
     .use(rehypeRaw)
     .use(rehypeIgnore, {})
     .use(rehypeAttrs, { properties: 'attr' })
