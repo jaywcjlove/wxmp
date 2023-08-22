@@ -25,7 +25,7 @@
     "@uiw/codemirror-theme-xcode": "^4.11.6",
     "@uiw/react-back-to-top": "^1.2.0",
     "@uiw/react-github-corners": "^1.5.15",
-    "@uiw/react-markdown-editor": "^5.10.0",
+    "@uiw/react-markdown-editor": "^5.11.2",
     "@wcj/dark-mode": "^1.0.15",
     "css-tree": "^2.2.1",
     "react": "^18.2.0",
@@ -40,7 +40,7 @@
     "remark-gfm": "^3.0.1",
     "remark-parse": "^10.0.1",
     "remark-rehype": "^10.1.0",
-    "styled-components": "^5.3.5",
+    "styled-components": "~6.0.7",
     "unified": "^10.1.2"
   },
   "devDependencies": {
@@ -50,7 +50,6 @@
     "@types/css-tree": "^2.3.1",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
-    "@types/styled-components": "^5.1.25",
     "kkt": "^7.2.0",
     "markdown-react-code-preview-loader": "^2.1.2"
   },
