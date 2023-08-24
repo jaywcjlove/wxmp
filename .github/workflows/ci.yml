@@ -6,12 +6,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+          registry-url: 'https://registry.npmjs.org'
 
       - run: npm install
       - run: npm run build
@@ -129,7 +130,6 @@ jobs:
       - name: Install
         run: npm install --build-from-source
 
-      - run: npm run hoist
       - run: npm run build
       # - run: npm run electron
 
@@ -163,7 +163,6 @@ jobs:
           node-version: 16
 
       - run: npm install
-      - run: npm run hoist
       - run: npm run build
 
       - uses: actions/download-artifact@v3
@@ -195,7 +194,6 @@ jobs:
         with:
           node-version: 16
       - run: npm install
-      - run: npm run hoist
       - run: npm run build
       # - run: npm run electron
 
