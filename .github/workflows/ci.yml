@@ -164,7 +164,7 @@ jobs:
           node-version: 18
 
       - run: npm install
-      # - run: npm run hoist
+      - run: npm run hoist
       - run: npm run build
 
       - uses: actions/download-artifact@v3
@@ -196,7 +196,7 @@ jobs:
         with:
           node-version: 18
       - run: npm install
-      # - run: npm run hoist
+      - run: npm run hoist
       - run: npm run build
       # - run: npm run electron
 

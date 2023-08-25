@@ -14,6 +14,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@lerna/legacy-package-management": "^7.1.5",
     "cross-env": "^7.0.3",
     "husky": "^8.0.1",
     "lerna": "^7.1.5",
