@@ -130,6 +130,7 @@ jobs:
       - name: Install
         run: npm install --build-from-source
 
+      - run: npm run hoist
       - run: npm run build
       # - run: npm run electron
 
@@ -163,6 +164,7 @@ jobs:
           node-version: 16
 
       - run: npm install
+      - run: npm run hoist
       - run: npm run build
 
       - uses: actions/download-artifact@v3
@@ -194,6 +196,7 @@ jobs:
         with:
           node-version: 16
       - run: npm install
+      - run: npm run hoist
       - run: npm run build
       # - run: npm run electron
 
