@@ -11,7 +11,7 @@ h1 {
   line-height: 1.75;
   font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB',
     'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   margin: 2em auto 1em;
   padding: 0 1em;
@@ -63,7 +63,7 @@ li {
 }
 
 p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5em;
   padding: 0.5em 0 !important;
   margin-bottom: 0 !important;
