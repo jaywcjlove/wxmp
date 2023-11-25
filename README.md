@@ -2,6 +2,9 @@
   <h1 align="center">微信公众号 Markdown 编辑器</h1>
 </div>
 
+[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor)
+[![CI](https://github.com/jaywcjlove/wxmp/actions/workflows/ci.yml/badge.svg)](https://github.com/jaywcjlove/wxmp/actions/workflows/ci.yml)
+
 [![微信公众号 Markdown 编辑器](https://user-images.githubusercontent.com/1680273/188264183-a6b8cb6a-92e1-4a73-afc5-4f0234b26ed3.png)](https://jaywcjlove.github.io/wxmp)
 
 微信公众号文章 Markdown 在线编辑器，使用 markdown 语法创建一篇简介美观大方的微信公众号图文。由于发版本麻烦，和一些功能无法扩展停滞开发了，未来不再开发 Chrome 的插件(暂存在 chrome 分支)，通过 web 版本定制更丰富的功能。
