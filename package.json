@@ -19,7 +19,7 @@
     "husky": "^8.0.1",
     "lerna": "^7.1.5",
     "prettier": "^3.0.2",
-    "tsbb": "~4.1.0"
+    "tsbb": "~4.2.0"
   },
   "workspaces": {
     "packages": [
