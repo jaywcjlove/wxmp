@@ -14,10 +14,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@lerna/legacy-package-management": "^7.1.5",
+    "@lerna/legacy-package-management": "^8.0.0",
     "cross-env": "^7.0.3",
     "husky": "^8.0.1",
-    "lerna": "^7.1.5",
+    "lerna": "^8.0.0",
     "prettier": "^3.0.2",
     "tsbb": "~4.1.0"
   },
