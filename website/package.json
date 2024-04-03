@@ -41,7 +41,7 @@
     "remark-parse": "^10.0.1",
     "remark-rehype": "^10.1.0",
     "styled-components": "~6.1.0",
-    "unified": "^10.1.2"
+    "unified": "^11.0.0"
   },
   "devDependencies": {
     "@kkt/less-modules": "^7.2.0",
