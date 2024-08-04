@@ -2,7 +2,7 @@
   "name": "wxmp",
   "description": "微信公众号 Markdown 编辑器",
   "homepage": "https://github.com/jaywcjlove/wxmp.git",
-  "version": "2.3.3",
+  "version": "2.4.0",
   "main": "main.js",
   "author": "Kenny Wong <398188662@qq.com>",
   "private": true,
@@ -18,13 +18,13 @@
     "build": "npm run copy && cross-env NODE_ENV=production electron-builder build --publish=never --config config.json"
   },
   "dependencies": {
-    "@wcj/wxmp-main": "2.3.3"
+    "@wcj/wxmp-main": "2.4.0"
   },
   "devDependencies": {
-    "@wcj/wxmp-preload": "2.3.3",
+    "@wcj/wxmp-preload": "2.4.0",
     "cpy-cli": "^5.0.0",
     "electron": "20.1.3",
     "electron-builder": "23.3.3",
-    "website": "2.3.3"
+    "website": "2.4.0"
   }
 }

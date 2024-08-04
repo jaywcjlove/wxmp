@@ -1,6 +1,6 @@
 {
   "name": "@wcj/wxmp-main",
-  "version": "2.3.3",
+  "version": "2.4.0",
   "main": "./lib/index.js",
   "private": true,
   "scripts": {
