@@ -148,6 +148,7 @@ jobs:
         run: ls -R
 
       - uses: actions/upload-artifact@v4
+        if: needs.build.outputs.successful == 'true'
         with:
           name: wxmp-windows
           path: |
@@ -181,6 +182,7 @@ jobs:
         run: ls -R
 
       - uses: actions/upload-artifact@v4
+        if: needs.build.outputs.successful == 'true'
         with:
           name: wxmp-macos
           path: |
@@ -214,6 +216,7 @@ jobs:
         run: ls -R
 
       - uses: actions/upload-artifact@v4
+        if: needs.build.outputs.successful == 'true'
         with:
           name: wxmp-linux
           path: |
@@ -223,7 +226,7 @@ jobs:
 
   create_release:
     needs: [build, build_windows, build_macos, build_linux]
-    if: needs.build.outputs.successful
+    if: needs.build.outputs.successful == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -261,7 +264,7 @@ jobs:
 
       - name: Create Release
         uses: ncipollo/release-action@v1
-        if: needs.build.outputs.successful
+        if: needs.build.outputs.successful == 'true'
         with:
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -303,7 +306,7 @@ jobs:
       - run: echo "outputs.version - ${{ needs.build.outputs.create_tag_version }}"
 
       - uses: dev-drprasad/delete-tag-and-release@v1.1
-        if: needs.build.outputs.successful
+        if: needs.build.outputs.successful == 'true'
         with:
           delete_release: true
           repo: jaywcjlove/wxmp
