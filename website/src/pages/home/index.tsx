@@ -1,5 +1,6 @@
 import MarkdownEditor, { getCommands } from '@uiw/react-markdown-editor';
 import { useContext } from 'react';
+// @ts-ignore
 import { EditorView } from '@codemirror/view';
 import { Preview } from './Preview';
 import { copy } from '../../commands/copy';

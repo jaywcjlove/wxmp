@@ -26,21 +26,21 @@ export function markdownToHTML(md: string, css: string, opts: MarkdownToHTMLOpti
     parseCustomProperty: false,
     positions: false,
   });
+
   // @ts-ignore
   const data = cssdata(ast.children.head, {}, { color: opts.preColor, theme: opts.previewTheme });
   const processor = unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
     .use(rehypePrism, {
       ignoreMissing: true,
     })
-    .use(rehypeRaw)
     .use(rehypeIgnore, {})
     .use(rehypeAttrs, { properties: 'attr' })
     .use(rehypeRewrite, {
       rewrite: (node, _index, parent) => {
-        // @ts-ignore
         if (
           node?.type === 'element' &&
           node?.tagName === 'code' &&

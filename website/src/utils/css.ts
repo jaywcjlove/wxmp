@@ -129,7 +129,7 @@ export const footnotesLabel = (node: Element) => {
   ];
 };
 
-export const imagesStyle = (node: Element, parent: Root | Element | null) => {
+export const imagesStyle = (node: Element, parent: Root | Element | undefined) => {
   if (
     parent?.type === 'element' &&
     /(p|a)/.test(parent.tagName) &&
