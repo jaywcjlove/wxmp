@@ -25,7 +25,7 @@
     "@uiw/codemirror-theme-xcode": "^4.11.6",
     "@uiw/react-back-to-top": "^1.2.0",
     "@uiw/react-github-corners": "^1.5.15",
-    "@uiw/react-markdown-editor": "^5.11.2",
+    "@uiw/react-markdown-editor": "^6.0.0",
     "@wcj/dark-mode": "^1.0.15",
     "css-tree": "^2.2.1",
     "react": "^18.2.0",
