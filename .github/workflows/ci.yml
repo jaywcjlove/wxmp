@@ -99,23 +99,23 @@ jobs:
           docker tag wxmp ${{ secrets.DOCKER_USER }}/wxmp:${{needs.build.outputs.version}}
           docker push ${{ secrets.DOCKER_USER }}/wxmp:${{needs.build.outputs.version}}
 
-      # Create Docker Image in GitHub
-      - name: Login to GitHub registry
-        run: echo ${{ github.token }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      # # Create Docker Image in GitHub
+      # - name: Login to GitHub registry
+      #   run: echo ${{ github.token }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Build docker image
-        working-directory: website
-        run: docker build -t ghcr.io/jaywcjlove/wxmp:latest .
+      # - name: Build docker image
+      #   working-directory: website
+      #   run: docker build -t ghcr.io/jaywcjlove/wxmp:latest .
 
-      - name: Publish to GitHub registry
-        run: docker push ghcr.io/jaywcjlove/wxmp:latest
+      # - name: Publish to GitHub registry
+      #   run: docker push ghcr.io/jaywcjlove/wxmp:latest
 
-      - name: Tag docker image (beta) and publish to GitHub registry
-        if: needs.build.outputs.successful
-        run: |
-            echo "version: v${{ needs.build.outputs.version }}"
-            docker tag ghcr.io/jaywcjlove/wxmp:latest ghcr.io/jaywcjlove/wxmp:${{needs.build.outputs.version}}
-            docker push ghcr.io/jaywcjlove/wxmp:${{needs.build.outputs.version}}
+      # - name: Tag docker image (beta) and publish to GitHub registry
+      #   if: needs.build.outputs.successful
+      #   run: |
+      #       echo "version: v${{ needs.build.outputs.version }}"
+      #       docker tag ghcr.io/jaywcjlove/wxmp:latest ghcr.io/jaywcjlove/wxmp:${{needs.build.outputs.version}}
+      #       docker push ghcr.io/jaywcjlove/wxmp:${{needs.build.outputs.version}}
 
   build_windows: 
     needs: [build]
