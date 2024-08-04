@@ -13,16 +13,22 @@ const Button = styled.button`
 const CopyView: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & ToolBarProps }> = (props) => {
   const { editorProps } = props;
   const handleClick = () => {
-    const dom = editorProps.preview.current;
-    dom?.focus();
-    window.getSelection()?.removeAllRanges();
-    let range = document.createRange();
-    range.setStartBefore(dom?.firstChild!);
-    range.setEndAfter(dom?.lastChild!);
-    window.getSelection()?.addRange(range);
-    document.execCommand(`copy`);
-    window.getSelection()?.removeAllRanges();
-    toast.success(<div>复制成功！去公众号编辑器复制吧！</div>);
+    const dom: HTMLDivElement | null = editorProps.preview.current;
+    if (!dom) {
+      toast.error(<div>dom is null</div>);
+      return;
+    }
+    dom.focus();
+    const htmlContent = dom.innerHTML;
+    navigator.clipboard
+      .writeText(htmlContent)
+      .then(() => {
+        toast.success(<div>复制成功！去公众号编辑器粘贴吧！</div>);
+      })
+      .catch((err) => {
+        toast.error(<div>{JSON.stringify(err)}</div>);
+        console.error('Failed to copy: ', err);
+      });
   };
   return (
     <Button type="button" onClick={handleClick}>
