@@ -80,7 +80,7 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-          
+
       # Create Docker Image
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
@@ -94,7 +94,7 @@ jobs:
         run: |
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
-            -t ${{ secrets.DOCKER_USER }}/wxmp:latest \
+            -t wxmp:latest \
             --push .
         
       - name: Build and push multi-platform image (with tag)
@@ -103,7 +103,7 @@ jobs:
         run: |
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
-            -t ${{ secrets.DOCKER_USER }}/wxmp:${{ needs.build.outputs.version }} \
+            -t wxmp:${{ needs.build.outputs.version }} \
             --push .
 
       - name: Tags & Push image (latest)
