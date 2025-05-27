@@ -4,6 +4,9 @@
 
 [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor)
 [![CI](https://github.com/jaywcjlove/wxmp/actions/workflows/ci.yml/badge.svg)](https://github.com/jaywcjlove/wxmp/actions/workflows/ci.yml)
+[![Docker Image Version (latest by date)](https://img.shields.io/docker/v/wcjiang/wxmp?logo=docker)](https://hub.docker.com/r/wcjiang/wxmp)
+[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/wcjiang/wxmp?logo=docker)](https://hub.docker.com/r/wcjiang/wxmp)
+[![Docker Pulls](https://img.shields.io/docker/pulls/wcjiang/wxmp?logo=docker)](https://hub.docker.com/r/wcjiang/wxmp)
 
 [![微信公众号 Markdown 编辑器](https://user-images.githubusercontent.com/1680273/188264183-a6b8cb6a-92e1-4a73-afc5-4f0234b26ed3.png)](https://jaywcjlove.github.io/wxmp)
 
