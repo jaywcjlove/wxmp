@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.64c9e059.css",
-    "main.js": "/static/js/main.04066bd5.js",
+    "main.js": "/static/js/main.e8203036.js",
     "static/js/8694.abc1345c.chunk.js": "/static/js/8694.abc1345c.chunk.js",
     "static/js/2266.fdab4545.chunk.js": "/static/js/2266.fdab4545.chunk.js",
     "static/js/6769.90981532.chunk.js": "/static/js/6769.90981532.chunk.js",
@@ -121,7 +121,7 @@
     "static/media/github.svg": "/static/media/github.6988a55f42f5097e5bd19ed9ae72ccde.svg",
     "static/media/color.svg": "/static/media/color.3cdb61387d75158307fc6d9ed1ab3e74.svg",
     "main.64c9e059.css.map": "/static/css/main.64c9e059.css.map",
-    "main.04066bd5.js.map": "/static/js/main.04066bd5.js.map",
+    "main.e8203036.js.map": "/static/js/main.e8203036.js.map",
     "8694.abc1345c.chunk.js.map": "/static/js/8694.abc1345c.chunk.js.map",
     "2266.fdab4545.chunk.js.map": "/static/js/2266.fdab4545.chunk.js.map",
     "6769.90981532.chunk.js.map": "/static/js/6769.90981532.chunk.js.map",
@@ -240,6 +240,6 @@
     "static/js/refractor-prismjs-vendor.56bc21be.js",
     "static/js/react-vendor.2cbe2363.js",
     "static/css/main.64c9e059.css",
-    "static/js/main.04066bd5.js"
+    "static/js/main.e8203036.js"
   ]
 }
