@@ -94,22 +94,18 @@ jobs:
         run: |
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
-            -t wxmp \
+            -t ${{ secrets.DOCKER_USER }}/wxmp:latest \
             --push .
         
 
-      - name: Tags & Push image (latest)
-        run: |
-          echo "outputs.tag - ${{ needs.build.outputs.version }}"
-          docker tag wxmp ${{ secrets.DOCKER_USER }}/wxmp:latest
-          docker push ${{ secrets.DOCKER_USER }}/wxmp:latest
-
-      - name: Tags & Push image
+      - name: Build and push multi-platform image (with tag)
         if: needs.build.outputs.successful
+        working-directory: website
         run: |
-          echo "outputs.tag - ${{ needs.build.outputs.version }}"
-          docker tag wxmp ${{ secrets.DOCKER_USER }}/wxmp:${{needs.build.outputs.version}}
-          docker push ${{ secrets.DOCKER_USER }}/wxmp:${{needs.build.outputs.version}}
+          docker buildx build \
+            --platform linux/amd64,linux/arm64 \
+            -t ${{ secrets.DOCKER_USER }}/wxmp:${{ needs.build.outputs.version }} \
+            --push .
 
       # # Create Docker Image in GitHub
       # - name: Login to GitHub registry
