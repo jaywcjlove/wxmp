@@ -78,13 +78,33 @@ jobs:
       - run: echo "outputs.create_tag_versionNumber - ${{ needs.build.outputs.create_tag_versionNumber }}"
       - run: echo "outputs.tag - ${{ needs.build.outputs.tag }}"
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+          
       # Create Docker Image
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build wxmp image
+      # - name: Build wxmp image
+      #   working-directory: website
+      #   run: docker image build -t wxmp .
+
+      - name: Build and push multi-platform image (latest)
         working-directory: website
-        run: docker image build -t wxmp .
+        run: |
+          docker buildx build \
+            --platform linux/amd64,linux/arm64 \
+            -t ${{ secrets.DOCKER_USER }}/wxmp:latest \
+            --push .
+        
+      - name: Build and push multi-platform image (with tag)
+        if: needs.build.outputs.successful
+        working-directory: website
+        run: |
+          docker buildx build \
+            --platform linux/amd64,linux/arm64 \
+            -t ${{ secrets.DOCKER_USER }}/wxmp:${{ needs.build.outputs.version }} \
+            --push .
 
       - name: Tags & Push image (latest)
         run: |
